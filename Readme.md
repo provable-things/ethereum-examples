@@ -8,5 +8,6 @@ Thanks to our [Ethereum API helpers](https://github.com/oraclize/ethereum-api) u
 
 More @ [devs.oraclize.it](http://devs.oraclize.it)
 
-Gitter chan @ [![Join the chat at https://gitter.im/oraclize/ethereum-examples](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/oraclize/ethereum-examples?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+Gitter chan @ 
+[![Join the chat at https://gitter.im/oraclize/ethereum-api](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/oraclize/ethereum-api?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
