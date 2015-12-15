@@ -1,6 +1,14 @@
+/*
+   Simple "roll a Dice".
+
+   After calling the "bet" method along with 1 wei,
+   the contract asks Wolfram Alpha to roll a dice.
+   You get back either 0 wei or 2.
+*/
+
 import "dev.oraclize.it/api.sol";
 
-contract Lottery is usingOraclize {
+contract SimpleDice is usingOraclize {
     address owner;
     mapping (bytes32 => address) bets;
 
@@ -26,5 +34,4 @@ contract Lottery is usingOraclize {
     function kill(){
         if (msg.sender == owner) suicide(msg.sender);
     }
-    
 }
