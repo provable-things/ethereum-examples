@@ -1,6 +1,6 @@
 Here you can find some code examples showing how *easy* integrating the [Oraclize Ethereum API](https://github.com/oraclize/ethereum-api) is.
 
-Thanks to our [Ethereum API helpers](https://github.com/oraclize/ethereum-api) using Oraclize in your Solidity code is as simple as inheriting the `usingOraclize` contract: this will provide you some functions, like `oraclize_query`, which make it trivial to leverage our technology straight away. 
+Thanks to our [Ethereum API helpers](https://github.com/oraclize/ethereum-api) using Oraclize in your Solidity/Serpent code is as simple as inheriting the `usingOraclize` contract: this will provide you some functions, like `oraclize_query`, which make it trivial to leverage our technology straight away. 
 
 
 ----------

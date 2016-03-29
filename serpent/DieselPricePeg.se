@@ -1,0 +1,24 @@
+inset("dev.oraclize.it/api.se")
+
+data owner
+data DieselPriceUSD
+
+def init():
+	oraclize_setNetwork(networkID_auto)
+	oraclize_setProof(proofType_TLSNotary | proofStorage_IPFS)
+	self.owner = msg.sender
+	update(0)
+
+def __callback(myid:bytes32, result:string, proof:bytes):
+	if(msg.sender != oraclize_cbAddress()):
+		return
+	else:
+		save(self.DieselPriceUSD, result, chars=len(result))
+		update(60*10)
+
+macro update($delay):
+	oraclize_query($delay,text("URL"),text("xml(https://www.fueleconomy.gov/ws/rest/fuelprices).fuelPrices.diesel"))
+
+def kill():
+	if(msg.sender==self.owner):
+		suicide(msg.sender)

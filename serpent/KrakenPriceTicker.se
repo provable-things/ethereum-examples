@@ -1,0 +1,24 @@
+inset("dev.oraclize.it/api.se")
+
+data owner
+data ETHXBT
+
+def init():
+	oraclize_setNetwork(networkID_auto)
+	self.owner = msg.sender
+	#oraclize_setProof(proofType_TLSNotary | proofStorage_IPFS)
+	update()
+
+def __callback(myid:bytes32, result:string):
+	if (msg.sender != oraclize_cbAddress()):
+		return
+	else:
+		save(self.ETHXBT, result, chars=len(result))
+		update()
+
+macro update():
+	oraclize_query(60, text("URL"), text("json(https://api.kraken.com/0/public/Ticker?pair=ETHXBT).result.XETHXXBT.c.0"))
+
+def kill():
+	if(msg.sender==self.owner):
+		suicide(msg.sender)
