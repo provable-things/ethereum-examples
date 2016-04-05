@@ -13,7 +13,7 @@ contract KrakenPriceTicker is usingOraclize {
     string public ETHXBT;
     
 
-    function PriceTicker() {
+    function KrakenPriceTicker() {
         owner = msg.sender;
         oraclize_setProof(proofType_TLSNotary | proofStorage_IPFS);
         update();
