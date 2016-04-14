@@ -13,7 +13,6 @@ contract YoutubeViews is usingOraclize {
     uint public viewsCount;
 
     function YoutubeViews() {
-        oraclize_setNetwork(networkID_testnet);
         update(0);
     }
     

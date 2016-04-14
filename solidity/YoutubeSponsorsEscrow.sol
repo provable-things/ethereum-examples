@@ -19,7 +19,6 @@ contract YoutubeViews is usingOraclize {
 
     function YoutubeViews() {
         owner = msg.sender;
-        //oraclize_setNetwork(networkID_testnet);
     }
     
     function setVideoID(string _videoID, uint _threshold) {

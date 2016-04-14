@@ -6,7 +6,6 @@ contract DieselPricePeg is usingOraclize {
     
 
     function DieselPricePeg() {
-        oraclize_setNetwork(networkID_testnet);
         oraclize_setProof(proofType_TLSNotary | proofStorage_IPFS);
         update(0); // first check at contract creation
     }
