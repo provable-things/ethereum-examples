@@ -11,7 +11,8 @@
    NOTE: this only handles one escrow at a time, which must finish before a new request is submitted
 */
 
-import "oraclizeAPI.sol";
+pragma solidity ^0.4.0;
+import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 import "iudexAPI.sol";
 
 contract EthBtcEscrow is usingOraclize, usingIudex {
@@ -32,7 +33,7 @@ contract EthBtcEscrow is usingOraclize, usingIudex {
         return 10 - ((score - 1)/100000);
     }
 
-    function escrow(uint _mBTC, string _btcAddr, address _ethAddr, uint _timestampLimit) {
+    function escrow(uint _mBTC, string _btcAddr, address _ethAddr, uint _timestampLimit) payable {
         mBTC = _mBTC;
         ethAddr = _ethAddr;
         ethReturnAddr = msg.sender;

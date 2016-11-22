@@ -6,7 +6,8 @@
    You get back either 0 wei or 2.
 */
 
-import "dev.oraclize.it/api.sol";
+pragma solidity ^0.4.0;
+import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
 contract SimpleDice is usingOraclize {
     address owner;
@@ -21,7 +22,7 @@ contract SimpleDice is usingOraclize {
         if (uint(bytes(result)[0]) - 48 > 3) bets[myid].send(2);
     }
     
-    function bet(){
+    function bet() payable {
         if ((msg.value != 1)||(this.balance < 2)) throw;
         rollDice();
     }

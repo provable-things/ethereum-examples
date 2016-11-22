@@ -1,4 +1,5 @@
-import "dev.oraclize.it/api.sol";
+pragma solidity ^0.4.0;
+import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
 contract EtherStopLoss is usingOraclize {
   bytes32 krakenid;
@@ -8,11 +9,11 @@ contract EtherStopLoss is usingOraclize {
     oraclize_setProof(proofType_TLSNotary | proofStorage_IPFS)
   }
 
-  function(){
+  function() payable {
     krakenTicker();
   }
     
-  function krakenTicker() {
+  function krakenTicker() payable {
     krakenid = oraclize_query(60, "URL", "json(https://api.kraken.com/0/public/Ticker?pair=ETHXBT).result.XETHXXBT.c.0");
   }
 

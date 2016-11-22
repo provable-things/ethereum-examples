@@ -4,7 +4,8 @@
    This contract will be called back automatically 1 day after its birth
 */
 
-import "dev.oraclize.it/api.sol";
+pragma solidity ^0.4.0;
+import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
 contract Alarm is usingOraclize {
 

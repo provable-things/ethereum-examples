@@ -1,4 +1,5 @@
-import "dev.oraclize.it/api.sol";
+pragma solidity ^0.4.0;
+import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
 contract DieselPricePeg is usingOraclize {
     
@@ -17,7 +18,7 @@ contract DieselPricePeg is usingOraclize {
         update(60*10); // schedule another check in 10 minutes
     }
     
-    function update(uint delay) {
+    function update(uint delay) payable {
         oraclize_query(delay, "URL", "xml(https://www.fueleconomy.gov/ws/rest/fuelprices).fuelPrices.diesel");
     }
     

@@ -5,7 +5,8 @@
    which is updated every ~60 seconds.
 */
 
-import "dev.oraclize.it/api.sol";
+pragma solidity ^0.4.0;
+import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
 contract KrakenPriceTicker is usingOraclize {
     
@@ -25,7 +26,7 @@ contract KrakenPriceTicker is usingOraclize {
         update();
     }
     
-    function update() {
+    function update() payable {
         oraclize_query(60, "URL", "json(https://api.kraken.com/0/public/Ticker?pair=ETHXBT).result.XETHXXBT.c.0");
     }
     

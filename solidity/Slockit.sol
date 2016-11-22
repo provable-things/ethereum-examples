@@ -5,7 +5,8 @@
    and closes something (a window?) if needed.
 */
 
-import "dev.oraclize.it/api.sol";
+pragma solidity ^0.4.0;
+import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
 contract Etherlock {
     function open();
@@ -27,7 +28,7 @@ contract DoorLock is usingOraclize {
             checkWeather();
     }
     
-    function checkWeather() {
+    function checkWeather() payable {
         oraclize_query(60, "WolframAlpha", "weather conditions in London");
     }
     

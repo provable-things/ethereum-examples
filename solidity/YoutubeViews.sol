@@ -6,7 +6,8 @@
 */
 
 
-import "dev.oraclize.it/api.sol";
+pragma solidity ^0.4.0;
+import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
 contract YoutubeViews is usingOraclize {
     
@@ -25,7 +26,7 @@ contract YoutubeViews is usingOraclize {
         update(60*10); // update viewsCount every 10 minutes
     }
     
-    function update(uint delay) {
+    function update(uint delay) payable {
         oraclize_query(delay, 'URL', 'html(https://www.youtube.com/watch?v=9bZkp7q19f0).xpath(//*[contains(@class, "watch-view-count")]/text())');
     }
     
