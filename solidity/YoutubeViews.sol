@@ -1,8 +1,8 @@
 /*
    Youtube video views
 
-   This contract keeps in storage an always-in-sync views
-   counter for a certain Youtube video.
+   This contract keeps in storage a views counter
+   for a given Youtube video.
 */
 
 
@@ -12,22 +12,24 @@ import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 contract YoutubeViews is usingOraclize {
     
     uint public viewsCount;
+    
+    event newOraclizeQuery(string description);
+    event newYoutubeViewsCount(uint views);
 
     function YoutubeViews() {
-        update(0);
+        update();
     }
     
-
     function __callback(bytes32 myid, string result) {
         if (msg.sender != oraclize_cbAddress()) throw;
-        viewsCount = parseInt(result, 0);
-        // do something with viewsCount
-        // (like tipping the author once viewsCount > X?)
-        update(60*10); // update viewsCount every 10 minutes
+        viewsCount = parseInt(result);
+        newYoutubeViewsCount(viewsCount);
+        // do something with viewsCount. like tipping the author if viewsCount > X?
     }
     
-    function update(uint delay) payable {
-        oraclize_query(delay, 'URL', 'html(https://www.youtube.com/watch?v=9bZkp7q19f0).xpath(//*[contains(@class, "watch-view-count")]/text())');
+    function update() payable {
+        newOraclizeQuery("Oraclize query was sent, standying by for the answer..");
+        oraclize_query('URL', 'html(https://www.youtube.com/watch?v=9bZkp7q19f0).xpath(//*[contains(@class, "watch-view-count")]/text())');
     }
     
 } 

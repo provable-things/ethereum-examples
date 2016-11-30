@@ -10,12 +10,13 @@ import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
 contract KrakenPriceTicker is usingOraclize {
     
-    address owner;
     string public ETHXBT;
+    
+    event newOraclizeQuery(string description);
+    event newKrakenPriceTicker(string price);
     
 
     function KrakenPriceTicker() {
-        owner = msg.sender;
         oraclize_setProof(proofType_TLSNotary | proofStorage_IPFS);
         update();
     }
@@ -23,15 +24,17 @@ contract KrakenPriceTicker is usingOraclize {
     function __callback(bytes32 myid, string result, bytes proof) {
         if (msg.sender != oraclize_cbAddress()) throw;
         ETHXBT = result;
+        newKrakenPriceTicker(ETHXBT);
         update();
     }
     
     function update() payable {
-        oraclize_query(60, "URL", "json(https://api.kraken.com/0/public/Ticker?pair=ETHXBT).result.XETHXXBT.c.0");
-    }
-    
-    function kill(){
-        if (msg.sender == owner) suicide(msg.sender);
+        if (oraclize.getPrice("URL") > this.balance) {
+            newOraclizeQuery("Oraclize query was NOT sent, please add some ETH to cover for the query fee");
+        } else {
+            newOraclizeQuery("Oraclize query was sent, standying by for the answer..");
+            oraclize_query(60, "URL", "json(https://api.kraken.com/0/public/Ticker?pair=ETHXBT).result.XETHXXBT.c.0");
+        }
     }
     
 } 

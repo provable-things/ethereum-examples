@@ -1,25 +1,35 @@
+/*
+   Diesel Price Peg
+
+   This contract keeps in storage a reference
+   to the Diesel Price in USD
+*/
+
+
 pragma solidity ^0.4.0;
 import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
-contract DieselPricePeg is usingOraclize {
+contract DieselPrice is usingOraclize {
     
     uint public DieselPriceUSD;
-    
+
+    event newOraclizeQuery(string description);
+    event newDieselPrice(string price);
 
     function DieselPricePeg() {
-        oraclize_setProof(proofType_TLSNotary | proofStorage_IPFS);
-        update(0); // first check at contract creation
+        update(); // first check at contract creation
     }
 
-    function __callback(bytes32 myid, string result, bytes proof) {
+    function __callback(bytes32 myid, string result) {
         if (msg.sender != oraclize_cbAddress()) throw;
+        event newDieselPrice(result);
         DieselPriceUSD = parseInt(result, 2); // let's save it as $ cents
         // do something with the USD Diesel price
-        update(60*10); // schedule another check in 10 minutes
     }
     
-    function update(uint delay) payable {
-        oraclize_query(delay, "URL", "xml(https://www.fueleconomy.gov/ws/rest/fuelprices).fuelPrices.diesel");
+    function update() payable {
+        newOraclizeQuery("Oraclize query was sent, standying by for the answer..");
+        oraclize_query("URL", "xml(https://www.fueleconomy.gov/ws/rest/fuelprices).fuelPrices.diesel");
     }
     
 }
