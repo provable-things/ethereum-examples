@@ -13,7 +13,7 @@ contract WolframAlpha is usingOraclize {
     string public temperature;
     
     event newOraclizeQuery(string description);
-    event newTemperatureMeasure(uint temperature);
+    event newTemperatureMeasure(string temperature);
 
     function WolframAlpha() {
         update();
