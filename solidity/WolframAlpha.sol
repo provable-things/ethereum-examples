@@ -21,7 +21,8 @@ contract WolframAlpha is usingOraclize {
     
     function __callback(bytes32 myid, string result) {
         if (msg.sender != oraclize_cbAddress()) throw;
-        newTemperatureMeasure(result);
+        temperature = result;
+        newTemperatureMeasure(temperature);
         // do something with the temperature measure..
     }
     

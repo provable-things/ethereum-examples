@@ -11,10 +11,10 @@ import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
 contract YoutubeViews is usingOraclize {
     
-    uint public viewsCount;
+    string public viewsCount;
     
     event newOraclizeQuery(string description);
-    event newYoutubeViewsCount(uint views);
+    event newYoutubeViewsCount(string views);
 
     function YoutubeViews() {
         update();
@@ -22,7 +22,7 @@ contract YoutubeViews is usingOraclize {
     
     function __callback(bytes32 myid, string result) {
         if (msg.sender != oraclize_cbAddress()) throw;
-        viewsCount = parseInt(result);
+        viewsCount = result;
         newYoutubeViewsCount(viewsCount);
         // do something with viewsCount. like tipping the author if viewsCount > X?
     }

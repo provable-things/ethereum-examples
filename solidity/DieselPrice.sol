@@ -16,7 +16,7 @@ contract DieselPrice is usingOraclize {
     event newOraclizeQuery(string description);
     event newDieselPrice(string price);
 
-    function DieselPricePeg() {
+    function DieselPrice() {
         update(); // first check at contract creation
     }
 
