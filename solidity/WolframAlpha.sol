@@ -26,7 +26,7 @@ contract WolframAlpha is usingOraclize {
     }
     
     function update() payable {
-        newOraclizeQuery("Oraclize query was sent, standying by for the answer..");
+        newOraclizeQuery("Oraclize query was sent, standing by for the answer..");
         oraclize_query("WolframAlpha", "temperature in London");
     }
     

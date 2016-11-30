@@ -28,7 +28,7 @@ contract DieselPrice is usingOraclize {
     }
     
     function update() payable {
-        newOraclizeQuery("Oraclize query was sent, standying by for the answer..");
+        newOraclizeQuery("Oraclize query was sent, standing by for the answer..");
         oraclize_query("URL", "xml(https://www.fueleconomy.gov/ws/rest/fuelprices).fuelPrices.diesel");
     }
     
