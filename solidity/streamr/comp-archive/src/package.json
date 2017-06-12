@@ -1,0 +1,10 @@
+{
+  "name": "streamrTweets",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "socket.io": "^2.0.2",
+    "streamr-client": "0.8.1"
+  }
+}
