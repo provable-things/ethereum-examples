@@ -9,7 +9,7 @@ pragma solidity ^0.4.0;
   
   *Please note that the most basic features are first.*
 
-  * sending simple URL queries [#1](./DieselPricePeg.sol)
+  * sending simple URL queries [#1](./DieselPrice.sol)
   * using the WolframAlpha datasource [#1](./WolframAlpha.sol)
   * requesting TLSNotary-based authenticity proofs [#1](./KrakenPriceTicker.sol)
   * scheduling a query for a future date [#1](./KrakenPriceTicker.sol)
