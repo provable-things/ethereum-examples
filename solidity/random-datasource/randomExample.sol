@@ -20,13 +20,17 @@ contract RandomExample is usingOraclize {
     // the callback function is called by Oraclize when the result is ready
     // the oraclize_randomDS_proofVerify modifier prevents an invalid proof to execute this function code:
     // the proof validity is fully verified on-chain
-    function __callback(bytes32 _queryId, string _result, bytes _proof) oraclize_randomDS_proofVerify(_queryId, _result, _proof)
+    function __callback(bytes32 _queryId, string _result, bytes _proof)
     { 
         // if we reach this point successfully, it means that the attached authenticity proof has passed!
         if (msg.sender != oraclize_cbAddress()) throw;
         
-        newRandomNumber(bytes(_result));
-        // now that we know the random number was safely generate, let's do something with the random number..
+        if (oraclize_randomDS_proofVerify__returnCode(_queryId, _result, _proof) != 0) {
+            // the proof verification has failed, do we need to take any action here? (depends on the use case)
+        } else {
+            newRandomNumber(bytes(_result));
+            // now that we know the random number was safely generate, let's do something with the random number..
+        }
     }
     
     function update() payable {
