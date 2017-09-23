@@ -28,8 +28,9 @@ contract RandomExample is usingOraclize {
         if (oraclize_randomDS_proofVerify__returnCode(_queryId, _result, _proof) != 0) {
             // the proof verification has failed, do we need to take any action here? (depends on the use case)
         } else {
+            // the proof verification has passed
+            // now that we know that the random number was safely generated, let's use it..
             newRandomNumber(bytes(_result));
-            // now that we know the random number was safely generate, let's do something with the random number..
         }
     }
     
