@@ -10,7 +10,8 @@ import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
 contract RandomExample is usingOraclize {
     
-    event newRandomNumber(bytes);
+    event newRandomNumber_bytes(bytes);
+    event newRandomNumber_uint(uint);
 
     function RandomExample() {
         oraclize_setProof(proofType_Ledger); // sets the Ledger authenticity proof in the constructor
@@ -30,7 +31,14 @@ contract RandomExample is usingOraclize {
         } else {
             // the proof verification has passed
             // now that we know that the random number was safely generated, let's use it..
-            newRandomNumber(bytes(_result));
+            
+            newRandomNumber_bytes(bytes(_result)); // this is the resulting random number (bytes)
+            
+            // for simplicity of use, let's also convert the random bytes to uint if we need
+            uint maxRange = 2**(8*5); // this is the highest uint we want to get. It should never be greater than 2^(8*N), where N is the number of random bytes we had asked the datasource to return
+            uint randomNumber = uint(sha3(_result)) % maxRange; // this is an efficient way to get the uint out in the [0, maxRange] range
+            
+            newRandomNumber_uint(randomNumber); // this is the resulting random number (uint)
         }
     }
     
