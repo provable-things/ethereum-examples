@@ -6,7 +6,7 @@ This folder contains a Solidity example contract code showing how the Oraclize *
 
 The rationale behind this method of securely feeding off-chain randomness into the blockchain is explained in the [“A Scalable Architecture for On-Demand, Untrusted Delivery of Entropy”](http://www.oraclize.it/papers/random_datasource-rev1.pdf) whitepaper.
 
-The design described there prevents Oraclize from tampering with the random results coming from the Trusted Execution Envirnment (TEE) and protects the user from a number of attack vectors.
+The design described there prevents Oraclize from tampering with the random results coming from the Trusted Execution Environment (TEE) and protects the user from a number of attack vectors.
 
 The authenticity proof, attached with the result, can be easily verified not just off-chain but even by any Solidity contract receiving them. The example presented here, showing how to integrate the verification process, discards any random result whose authenticity proofs don't pass the verification process.
 
