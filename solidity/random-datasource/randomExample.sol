@@ -23,7 +23,6 @@ contract RandomExample is usingOraclize {
     // the proof validity is fully verified on-chain
     function __callback(bytes32 _queryId, string _result, bytes _proof)
     { 
-        // if we reach this point successfully, it means that the attached authenticity proof has passed!
         if (msg.sender != oraclize_cbAddress()) throw;
         
         if (oraclize_randomDS_proofVerify__returnCode(_queryId, _result, _proof) != 0) {
