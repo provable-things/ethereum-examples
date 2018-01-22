@@ -1,6 +1,5 @@
 /*
-   Oraclize Bitcoin getBalance Example
-
+   Oraclize Bitcoin Example
 */
 
 
@@ -26,7 +25,7 @@ contract BitcoinAddressExample is usingOraclize {
     }
     
     function getBalance(string _bitcoinAddress) payable {
-        oraclize_query("computation",["QmSxgmop35cjSfyj5MSLYqQJuZErEBFamVZ3NhYaT431P3", _bitcoinAddress]);
+        oraclize_query("computation",["QmaMFiHXSqCFKkGPbWZh5zKmM827GWNpk9Y1EYhoLfwdHq", _bitcoinAddress]);
     }
     
 }
