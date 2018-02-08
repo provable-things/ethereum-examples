@@ -32,11 +32,11 @@ var subscription = client.subscribe(
 )
 
 // Event binding examples
-client.bind('connected', function() {
+client.on('connected', function() {
 	console.log('A connection has been established!')
 })
 
-subscription.bind('subscribed', function() {
+subscription.on('subscribed', function() {
 	console.log('Subscribed to '+subscription.streamId)
   start = Date.now()
 })

@@ -37,7 +37,7 @@ contract StreamrTweetsCounter is usingOraclize {
             newOraclizeQuery("Oraclize query was sent, standing by for the answer...");
 
             oraclize_query("computation",
-                ["QmZ59e9XCd9MsxmsyZjhPRVxaKrqmZWcHw3ykx4oeysiVD", // the ipfs multihash of archive
+                ["QmWFV2UrcUFMFk5R4iTZdusTRsvqohFwHjyXNH1Yu9v3Nm", // the ipfs multihash of archive
                 "1"] // duration to run stream in minutes
             );
         }
