@@ -1,4 +1,4 @@
-#### Solidity Examples 
+#### Solidity Examples
 
 Here you can find some Solidity examples showing how to use the **Oraclize API** in such context.
 
@@ -18,4 +18,4 @@ This is a list of the features you will find there, along with a reference to th
 * full query encryption
 * partial query encryption
 * nested queries
-* using the computation datasource [#1](./computation/url-requests/urlRequests.sol) [#2](./streamr/StreamrTweetsCounter.sol)
+* using the computation datasource [#1](./computation-datasource/url-requests/urlRequests.sol) [#2](./computation-datasource/streamr/StreamrTweetsCounter.sol)
