@@ -1,0 +1,3 @@
+### "Relaxed" commitment hash Random Example
+
+Goal of this example is to showcase how to override the `oraclize_newRandomDSQuery` so that commitment hash requirements are relaxed and so it's more resilient to re-organizations. Default example has highest security guarantees, but the proof will fail at any re-org. This example is expected to work fine with up to a 4 block depth re-org, which occurs much less frequently.
