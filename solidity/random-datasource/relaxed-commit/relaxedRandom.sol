@@ -65,9 +65,10 @@ contract RandomExample is usingOraclize {
         assembly {
             mstore(unonce, 0x20)
             // Here is the edit: removes xoring of last blockhash with some
-            // current block vars, with that of one 4 blocks ago. Increasing
-            // this will lower chance of false proof fails, but alos security.
-            mstore(add(unonce, 0x20), blockhash(sub(number, 4)))
+            // current block vars, with that of a block committed for a modulo range
+            // this will lower chance of false proof fails, expected factor of n (6 in below case),
+            // Note this does lower the security guarantees
+            mstore(add(unonce, 0x20), blockhash(sub(sub(number, 1), mod(number, 6))))
             // original
             // mstore(add(unonce, 0x20), xor(blockhash(sub(number, 1)), xor(coinbase, timestamp)))
             mstore(sessionKeyHash, 0x20)
