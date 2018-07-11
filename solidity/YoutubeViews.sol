@@ -5,12 +5,6 @@
     for a given Youtube video.
 */
 
-
-pragma solidity ^0.4.0;
-
-import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
-
-
 pragma solidity ^0.4.0;
 
 import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
