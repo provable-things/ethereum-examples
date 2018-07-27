@@ -10,12 +10,12 @@ pragma solidity ^0.4.0;
 
 import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
-contract UrlRequestsComputation is usingOraclize {
+contract UrlRequests is usingOraclize {
 
     event newOraclizeQuery(string description);
     event emitResult(string result);
 
-    function UrlRequestsComputation() payable {
+    function UrlRequests() payable {
         oraclize_setProof(proofType_TLSNotary | proofStorage_IPFS);
     }
 
