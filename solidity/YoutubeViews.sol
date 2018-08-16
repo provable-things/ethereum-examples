@@ -30,6 +30,6 @@ contract YoutubeViews is usingOraclize {
 
     function update() public payable {
         NewOraclizeQuery("Oraclize query was sent, standing by for the answer..");
-        oraclize_query("URL", 'html(https://www.youtube.com/watch?v=9bZkp7q19f0).xpath(//*[contains(@class, "watch-view-count")]/text())');
+        oraclize_query("URL", 'html(https://www.youtube.com/watch?v=9bZkp7q19f0).xpath(//*[@id=\"count\"]/yt-view-count-renderer/span[1]/text())');
     }
 }
