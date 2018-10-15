@@ -1,0 +1,23 @@
+{
+  "name": "Oraclize Examples using Truffle: Computation-Datasource - Url Requests",
+  "version": "0.1.0",
+  "description": "Testing set up for Oraclize's Url-Requests example contract",
+  "main": "README.md",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n/a.git"
+  },
+  "author": "Oraclize - Greg Kapka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/n/a/issues"
+  },
+  "homepage": "https://github.com/n/a#readme",
+  "dependencies": {
+    "ethereum-bridge": "0.6.1",
+    "web3": "1.0.0-beta.35"
+  }
+}
