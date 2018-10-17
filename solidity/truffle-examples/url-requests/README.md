@@ -34,7 +34,7 @@ __`❍ test`__
 
 ## :camera: Passing Tests:
 
-[The passing tests!](https://github.com/oraclize/ethereum-examples/solidity/truffle-examples/url-requests/url-requests-tests.jpg)
+![The passing tests!](url-requests-tests.jpg)
 
 &nbsp;
 
@@ -42,7 +42,7 @@ __`❍ test`__
 
 __❍__ The computation data-source combined with the ethereum-bridge in a development environment can make for a slightly slower than usual response time for the Oraclize `__callback` - please be patient whilst this occurs!
 
-__❍__ Note also that the `UrlRequests.sol` smart-contract in `./contracts` has the proof-type commented out in the constructor. This is because the TLS-Notary proof is disabled on test-nets due to abuse. Using Oraclize on the ethereum main-net _without_ proofs is _not_ recommended, so don't forget to re-enable them for live deployments!  
+__❍__ Note also that the `UrlRequests.sol` smart-contract in `./contracts` has the proof-type commented out in the constructor. This is because the TLS-Notary proof has been disabled on test-nets due to abuse. Using Oraclize on the ethereum main-net _without_ proofs however is _not_ recommended, so don't forget to re-enable them for live deployments!  
 
 __❍__ If you have any further issues, head on over to our [Gitter](https://gitter.im/oraclize/ethereum-api?raw=true) channel to get timely support!
 
