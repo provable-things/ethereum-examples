@@ -1,5 +1,5 @@
 const Web3 = require('web3')
-const waitForEvent = require('./utils')
+const {waitForEvent} = require('./utils')
 const urlRequests = artifacts.require('./UrlRequests.sol')
 const web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:9545'))
 
@@ -77,19 +77,19 @@ contract('Oraclize Example using Truffle', async accounts => {
     })
 
     it('Should emit result from request for custom headers', async () => {
-      const {returnValues:{result}} = await waitForEvent(urlReq[0].events.emitResult)
+      const {returnValues:{result}} = await waitForEvent(urlReq[0].events.LogResult)
       const expRes = '{"Accept-Encoding": "gzip, deflate", "Host": "httpbin.org", "Accept": "*/*", "User-Agent": "python-requests/2.19.1", "Connection": "close", "Content-Type": "json"}'
       assert.equal(expRes, result, 'Incorrect result from custom header request!')
     })
 
     it('Should emit result from basic auth request', async () => {
-      const {returnValues:{result}} = await waitForEvent(urlReq[1].events.emitResult)
+      const {returnValues:{result}} = await waitForEvent(urlReq[1].events.LogResult)
       const expRes = '{  \"authenticated\": true,   \"user\": \"myuser\"}'
       assert.equal(expRes, result, 'Incorrect result from basic auth request!')
     })
 
     it('Should emit result from POST request', async () => {
-      const {returnValues:{result}} = await waitForEvent(urlReq[2].events.emitResult)
+      const {returnValues:{result}} = await waitForEvent(urlReq[2].events.LogResult)
       const expRes = {
         "status": 200,
         "result": [{
@@ -133,7 +133,7 @@ contract('Oraclize Example using Truffle', async accounts => {
     })
 
     it('Should emit result from PUT request', async () => {
-      const {returnValues:{result}} = await waitForEvent(urlReq[3].events.emitResult)
+      const {returnValues:{result}} = await waitForEvent(urlReq[3].events.LogResult)
       const expRes = {
             "args": {},
             "data": "{\"testing\": \"it works\"}",
@@ -162,7 +162,7 @@ contract('Oraclize Example using Truffle', async accounts => {
     })
 
     it('Should emit result from cookie request', async () => {
-      const {returnValues:{result}} = await waitForEvent(urlReq[4].events.emitResult)
+      const {returnValues:{result}} = await waitForEvent(urlReq[4].events.LogResult)
       const expRes = `{  "cookies": {    "thiscookie": "should be saved and visible :)"  }}`
       assert.equal(expRes, result, 'Incorrect result from cookie request!')
     })
