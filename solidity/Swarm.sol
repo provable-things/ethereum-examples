@@ -1,31 +1,30 @@
 /*
-   swarm example
+   Swarm example
 */
 
-
-pragma solidity ^0.4.0;
-import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
+pragma solidity ^0.4.25;
+import "https://raw.githubusercontent.com/oraclize/ethereum-api/master/oraclizeAPI_0.4.25.sol";
 
 contract Swarm is usingOraclize {
     
     string public swarmContent;
     
-    event newOraclizeQuery(string description);
-    event newSwarmContent(string swarmContent);
+    event newOraclizeQuery(string _description);
+    event newSwarmContent(string _swarmContent);
 
-    function Swarm() {
+    constructor() public payable {
         update();
     }
     
-    function __callback(bytes32 myid, string result) {
-        if (msg.sender != oraclize_cbAddress()) throw;
-        swarmContent = result;
-        newSwarmContent(result);
-        // do something with the swarm content..
+    function __callback(bytes32 _myid, string _result) {
+        if (msg.sender != oraclize_cbAddress()) revert();
+        swarmContent = _result;
+        emit newSwarmContent(_result);
+        // Do something with the Swarm content
     }
     
-    function update() payable {
-        newOraclizeQuery("Oraclize query was sent, standing by for the answer..");
+    function update() public payable {
+        emit newOraclizeQuery("Oraclize query was sent, standing by for the answer...");
         oraclize_query("swarm", "1dad37bcc272aa31d45128992be575820bececb13dd42c4cc87e4b6269067464");
     }
     
