@@ -4,31 +4,30 @@
     This contract keeps in storage a reference
     to the Diesel Price in USD
 */
-pragma solidity ^0.4.0;
-
-import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
-
+pragma solidity ^0.4.25;
+import "https://raw.githubusercontent.com/oraclize/ethereum-api/master/oraclizeAPI_0.4.25.sol";
 
 contract DieselPrice is usingOraclize {
 
-    uint public dieselPriceUSD;
+    uint256 public dieselPriceUSD;
 
-    event NewOraclizeQuery(string description);
-    event NewDieselPrice(string price);
+    event NewOraclizeQuery(string _description);
+    event NewDieselPrice(string _price);
 
-    function DieselPrice() public {
+    constructor() public payable {
         update(); // first check at contract creation
     }
 
-    function __callback(bytes32 myid, string result) public {
+    function __callback(bytes32 _myid, string _result) public {
         if (msg.sender != oraclize_cbAddress()) revert();
-        NewDieselPrice(result);
-        dieselPriceUSD = parseInt(result, 2); // let's save it as $ cents
-        // do something with the USD Diesel price
+        emit NewDieselPrice(_result);
+        dieselPriceUSD = parseInt(_result, 2); // Let's save it as $ cents (2 decimal places)
+        // Do something with the USD Diesel price
     }
 
     function update() public payable {
-        NewOraclizeQuery("Oraclize query was sent, standing by for the answer..");
+        emit NewOraclizeQuery("Oraclize query was sent, standing by for the answer...");
         oraclize_query("URL", "xml(https://www.fueleconomy.gov/ws/rest/fuelprices).fuelPrices.diesel");
     }
+    
 }
