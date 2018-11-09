@@ -7,11 +7,11 @@ pragma solidity ^0.4.0;
 import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
 
-contract DelegatedMathExample is usingOraclize {
+contract DelegatedMath is usingOraclize {
     
     event operationResult(uint _result);
     
-    function DelegatedMathExample() {
+    function DelegatedMath() {
         oraclize_setProof(proofType_TLSNotary | proofStorage_IPFS); 
         delegateOperation("32", "125");
     }

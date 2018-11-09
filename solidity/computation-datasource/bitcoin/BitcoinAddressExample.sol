@@ -9,7 +9,7 @@ import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 contract BitcoinAddressExample is usingOraclize {
     
     // Address balance in Satoshis
-    uint256 balance;
+    uint256 public balance;
 
     event BitcoinAddressBalance(uint _balance);
     

@@ -17,7 +17,7 @@ contract KrakenPriceTicker is usingOraclize {
     event NewKrakenPriceTicker(string price);
 
     function KrakenPriceTicker() public {
-        oraclize_setProof(proofType_TLSNotary | proofStorage_IPFS);
+        oraclize_setProof(proofType_Android | proofStorage_IPFS);
         update();
     }
 

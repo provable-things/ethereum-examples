@@ -5,24 +5,22 @@
     allowing custom headers, auth etc... to be used as kwargs. Refer to
     http://docs.python-requests.org/en/latest/api/ for full feature list
 */
-
 pragma solidity ^0.4.0;
 
-import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
+import "./oraclizeAPI.sol";
 
-contract UrlRequestsComputation is usingOraclize {
+contract UrlRequests is usingOraclize {
 
     event newOraclizeQuery(string description);
-    event emitResult(string result);
-
-    function UrlRequestsComputation() payable {
-        oraclize_setProof(proofType_TLSNotary | proofStorage_IPFS);
+    event LogResult(string result);
+ 
+    function UrlRequests() payable {
+        //oraclize_setProof(proofType_TLSNotary | proofStorage_IPFS);
     }
 
     function __callback(bytes32 myid, string result) {
         if (msg.sender != oraclize_cbAddress()) throw;
-
-        emitResult(result);
+        emit LogResult(result);
     }
 
     function request(string _query, string _method, string _url, string _kwargs) payable {
@@ -30,7 +28,6 @@ contract UrlRequestsComputation is usingOraclize {
             newOraclizeQuery("Oraclize query was NOT sent, please add some ETH to cover for the query fee");
         } else {
             newOraclizeQuery("Oraclize query was sent, standing by for the answer...");
-
             oraclize_query("computation",
                 [_query,
                 _method,
@@ -39,7 +36,6 @@ contract UrlRequestsComputation is usingOraclize {
             );
         }
     }
-
     // sends a custom content-type in header and returns the header used as result
     // wrap first arguement of computation ds with helper needed, such as json in this case
     function requestCustomHeaders() payable {

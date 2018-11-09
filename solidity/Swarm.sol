@@ -6,14 +6,14 @@
 pragma solidity ^0.4.0;
 import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
-contract swarmExample is usingOraclize {
+contract Swarm is usingOraclize {
     
     string public swarmContent;
     
     event newOraclizeQuery(string description);
     event newSwarmContent(string swarmContent);
 
-    function swarmExample() {
+    function Swarm() {
         update();
     }
     
