@@ -16,7 +16,7 @@ __`❍ git clone https://github.com/oraclize/ethereum-examples.git`__
 
 **3)** Enter this directory & install dependencies:
 
-__`❍ cd ethereum-examples/solidity/truffle-examples/url-requests && npm install`__
+__`❍ cd ethereum-examples/solidity/truffle-examples/youtube-views && npm install`__
 
 **4)** Launch Truffle:
 
