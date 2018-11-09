@@ -1,4 +1,4 @@
-# :wrench: :construction: Testing Oraclize's Swarm Example.
+# :wrench: :construction: Testing Oraclize's Kraken Swarm Example.
 
 &nbsp;
 
@@ -16,7 +16,7 @@ __`❍ git clone https://github.com/oraclize/ethereum-examples.git`__
 
 **3)** Enter this directory & install dependencies:
 
-__`❍ cd ethereum-examples/solidity/truffle-examples/url-requests && npm install`__
+__`❍ cd ethereum-examples/solidity/truffle-examples/swarm && npm install`__
 
 **4)** Launch Truffle:
 
@@ -34,7 +34,7 @@ __`❍ test`__
 
 ## :camera: Passing Tests:
 
-[The passing tests!](swarm-tests.jpg)
+[The passing tests!](kraken-price-test.jpg)
 
 &nbsp;
 
