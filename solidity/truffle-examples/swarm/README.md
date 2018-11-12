@@ -34,7 +34,7 @@ __`❍ test`__
 
 ## :camera: Passing Tests:
 
-[The passing tests!](kraken-price-test.jpg)
+[The passing tests!](swarm-tests.jpg)
 
 &nbsp;
 
