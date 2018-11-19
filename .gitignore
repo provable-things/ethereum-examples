@@ -3,3 +3,4 @@
 *.log
 *.yaml
 .node*
+**/build
