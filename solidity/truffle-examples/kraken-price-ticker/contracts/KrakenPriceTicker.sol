@@ -1,4 +1,4 @@
-pragma solidity ^0.4.25;
+pragma solidity ^0.5.0;
 
 import "./oraclizeAPI.sol";
 
@@ -14,7 +14,7 @@ contract KrakenPriceTicker is usingOraclize {
         update(); // Update price on contract creation...
     }
 
-    function __callback(bytes32 myid, string result, bytes proof) public {
+    function __callback(bytes32 myid, string memory result, bytes memory proof) public {
         require(msg.sender == oraclize_cbAddress());
         update(); // Recursively update the price stored in the contract...
         priceETHXBT = result;
