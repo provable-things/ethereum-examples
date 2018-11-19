@@ -6,9 +6,9 @@ This repo is to demonstrate how you would set up an Oraclize smart-contract deve
 
 ## :page_with_curl:  _Instructions_
 
-**1):** Fire up your favourite console & make sure you have Truffle 5 installed:
+**1):** Fire up your favourite console & make sure you have Truffle globally 5 installed:
 
-__`❍ npm install -g truffle@beta`__
+__`❍ npm install -g truffle@5.0.0-next.17`__
 
 **2)** Clone this repo somewhere:
 
