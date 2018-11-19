@@ -1,4 +1,4 @@
-pragma solidity ^0.4.25;
+pragma solidity ^0.5.0;
 
 import "./oraclizeAPI.sol";
 
@@ -11,12 +11,12 @@ contract DelegatedMath is usingOraclize {
         delegateOperation("32", "125");
     }
 
-    function __callback(bytes32 myid, string result, bytes proof) public {
+    function __callback(bytes32 myid, string memory result, bytes memory proof) public {
         require(msg.sender == oraclize_cbAddress());
         emit LogOperationResult(parseInt(result));
     }
     
-    function delegateOperation(string firstOperand, string secondOperand) public payable {
+    function delegateOperation(string memory firstOperand, string memory secondOperand) public payable {
         oraclize_query("computation",["Qmc8jmuT47cPWadF8ZhErGXj7J4VEp5H29knukCGirsN19", firstOperand, secondOperand]);
     }
 }
