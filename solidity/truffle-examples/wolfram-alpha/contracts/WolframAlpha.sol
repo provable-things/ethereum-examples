@@ -1,4 +1,4 @@
-pragma solidity ^0.4.25;
+pragma solidity ^0.5.0;
 
 import "./oraclizeAPI.sol";
 
@@ -13,7 +13,7 @@ contract WolframAlpha is usingOraclize {
         update(); // Update on contract creation...
     }
 
-    function __callback(bytes32 myid, string result) public {
+    function __callback(bytes32 myid, string memory result) public {
         require(msg.sender == oraclize_cbAddress());
         temperature = result;
         emit LogNewTemperatureMeasure(temperature);
