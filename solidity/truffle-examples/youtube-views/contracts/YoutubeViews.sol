@@ -1,4 +1,4 @@
-pragma solidity ^0.4.25;
+pragma solidity ^0.5.0;
 
 import "./oraclizeAPI.sol";
 
@@ -13,7 +13,7 @@ contract YoutubeViews is usingOraclize {
         update(); // Update views on contract creation...
     }
 
-    function __callback(bytes32 myid, string result) public {
+    function __callback(bytes32 myid, string memory result) public {
         require(msg.sender == oraclize_cbAddress());
         viewsCount = result;
         emit LogYoutubeViewCount(viewsCount);
