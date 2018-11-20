@@ -15,7 +15,7 @@ contract('Oraclize Example using Truffle', async accounts => {
       const {contract} = await urlRequests.new()
       const {methods, events} = new web3.eth.Contract(contract._jsonInterface, contract._address)
       urlReq[0] = {methods,events}
-      const {events:{newOraclizeQuery:{returnValues:{description}}}} = await methods.requestCustomHeaders().send({from: addr, gas: gasAmt})
+      const {events:{LogNewOraclizeQuery:{returnValues:{description}}}} = await methods.requestCustomHeaders().send({from: addr, gas: gasAmt})
       assert.equal(description, 'Oraclize query was sent, standing by for the answer...', 'Oraclize query incorrectly logged!')
     })
 
@@ -23,7 +23,7 @@ contract('Oraclize Example using Truffle', async accounts => {
       const {contract} = await urlRequests.new()
       const {methods, events} = new web3.eth.Contract(contract._jsonInterface, contract._address)
       urlReq[1] = {methods,events}
-      const {events:{newOraclizeQuery:{returnValues:{description}}}} = await methods.requestBasicAuth().send({from: addr, gas: gasAmt})
+      const {events:{LogNewOraclizeQuery:{returnValues:{description}}}} = await methods.requestBasicAuth().send({from: addr, gas: gasAmt})
       assert.equal(description, 'Oraclize query was sent, standing by for the answer...', 'Oraclize query incorrectly logged!')
     })
 
@@ -31,7 +31,7 @@ contract('Oraclize Example using Truffle', async accounts => {
       const {contract} = await urlRequests.new()
       const {methods, events} = new web3.eth.Contract(contract._jsonInterface, contract._address)
       urlReq[2] = {methods,events}
-      const {events:{newOraclizeQuery:{returnValues:{description}}}} = await methods.requestPost().send({from: addr, gas: gasAmt})
+      const {events:{LogNewOraclizeQuery:{returnValues:{description}}}} = await methods.requestPost().send({from: addr, gas: gasAmt})
       assert.equal(description, 'Oraclize query was sent, standing by for the answer...', 'Oraclize query incorrectly logged!')
     })
 
@@ -39,7 +39,7 @@ contract('Oraclize Example using Truffle', async accounts => {
       const {contract} = await urlRequests.new()
       const {methods, events} = new web3.eth.Contract(contract._jsonInterface, contract._address)
       urlReq[3] = {methods,events}
-      const {events:{newOraclizeQuery:{returnValues:{description}}}} = await methods.requestPut().send({from: addr, gas: gasAmt})
+      const {events:{LogNewOraclizeQuery:{returnValues:{description}}}} = await methods.requestPut().send({from: addr, gas: gasAmt})
       assert.equal(description, 'Oraclize query was sent, standing by for the answer...', 'Oraclize query incorrectly logged!')
     })
 
@@ -47,32 +47,32 @@ contract('Oraclize Example using Truffle', async accounts => {
       const {contract} = await urlRequests.new()
       const {methods, events} = new web3.eth.Contract(contract._jsonInterface, contract._address)
       urlReq[4] = {methods,events}
-      const {events:{newOraclizeQuery:{returnValues:{description}}}} = await methods.requestCookies().send({from: addr, gas: gasAmt})
+      const {events:{LogNewOraclizeQuery:{returnValues:{description}}}} = await methods.requestCookies().send({from: addr, gas: gasAmt})
       assert.equal(description, 'Oraclize query was sent, standing by for the answer...', 'Oraclize query incorrectly logged!')
     })
 
     it('Should log a failed second request for custom headers due to lack of funds', async () => {
-      const {events:{newOraclizeQuery:{returnValues:{description}}}} = await urlReq[0].methods.requestCustomHeaders().send({from: addr, gas: gasAmt})
+      const {events:{LogNewOraclizeQuery:{returnValues:{description}}}} = await urlReq[0].methods.requestCustomHeaders().send({from: addr, gas: gasAmt})
       assert.equal(description, 'Oraclize query was NOT sent, please add some ETH to cover for the query fee', 'Oraclize query incorrectly logged!')
     })
 
     it('Should log a failed second basic auth request due to lack of funds', async () => {
-      const {events:{newOraclizeQuery:{returnValues:{description}}}} = await urlReq[1].methods.requestBasicAuth().send({from: addr, gas: gasAmt})
+      const {events:{LogNewOraclizeQuery:{returnValues:{description}}}} = await urlReq[1].methods.requestBasicAuth().send({from: addr, gas: gasAmt})
       assert.equal(description, 'Oraclize query was NOT sent, please add some ETH to cover for the query fee', 'Oraclize query incorrectly logged!')
     })
 
     it('Should log a failed second POST request due to lack of funds', async () => {
-      const {events:{newOraclizeQuery:{returnValues:{description}}}} = await urlReq[2].methods.requestPost().send({from: addr, gas: gasAmt})
+      const {events:{LogNewOraclizeQuery:{returnValues:{description}}}} = await urlReq[2].methods.requestPost().send({from: addr, gas: gasAmt})
       assert.equal(description, 'Oraclize query was NOT sent, please add some ETH to cover for the query fee', 'Oraclize query incorrectly logged!')
     })
 
     it('Should log a failed second PUT request due to lack of funds', async () => {
-      const {events:{newOraclizeQuery:{returnValues:{description}}}} = await urlReq[3].methods.requestPut().send({from: addr, gas: gasAmt})
+      const {events:{LogNewOraclizeQuery:{returnValues:{description}}}} = await urlReq[3].methods.requestPut().send({from: addr, gas: gasAmt})
       assert.equal(description, 'Oraclize query was NOT sent, please add some ETH to cover for the query fee', 'Oraclize query incorrectly logged!')
     })
 
     it('Should log a failed second request for cookies due to lack of funds', async () => {
-      const {events:{newOraclizeQuery:{returnValues:{description}}}} = await urlReq[4].methods.requestCookies().send({from: addr, gas: gasAmt})
+      const {events:{LogNewOraclizeQuery:{returnValues:{description}}}} = await urlReq[4].methods.requestCookies().send({from: addr, gas: gasAmt})
       assert.equal(description, 'Oraclize query was NOT sent, please add some ETH to cover for the query fee', 'Oraclize query incorrectly logged!')
     })
 

@@ -1,33 +1,22 @@
-/*
-    Utilizies computation datasource
-
-    Provides a fully featured HTTP library by way of the Python requests module,
-    allowing custom headers, auth etc... to be used as kwargs. Refer to
-    http://docs.python-requests.org/en/latest/api/ for full feature list
-*/
-pragma solidity ^0.4.0;
+pragma solidity ^0.5.0;
 
 import "./oraclizeAPI.sol";
 
 contract UrlRequests is usingOraclize {
 
-    event newOraclizeQuery(string description);
+    event LogNewOraclizeQuery(string description);
     event LogResult(string result);
  
-    function UrlRequests() payable {
-        //oraclize_setProof(proofType_TLSNotary | proofStorage_IPFS);
-    }
-
-    function __callback(bytes32 myid, string result) {
-        if (msg.sender != oraclize_cbAddress()) throw;
+    function __callback(bytes32 myid, string memory result) public {
+        require(msg.sender == oraclize_cbAddress());
         emit LogResult(result);
     }
 
-    function request(string _query, string _method, string _url, string _kwargs) payable {
-        if (oraclize_getPrice("computation") > this.balance) {
-            newOraclizeQuery("Oraclize query was NOT sent, please add some ETH to cover for the query fee");
+    function request(string memory _query, string memory _method, string memory _url, string memory _kwargs) public payable {
+        if (oraclize_getPrice("computation") > address(this).balance) {
+            emit LogNewOraclizeQuery("Oraclize query was NOT sent, please add some ETH to cover for the query fee");
         } else {
-            newOraclizeQuery("Oraclize query was sent, standing by for the answer...");
+            emit LogNewOraclizeQuery("Oraclize query was sent, standing by for the answer...");
             oraclize_query("computation",
                 [_query,
                 _method,
@@ -38,7 +27,7 @@ contract UrlRequests is usingOraclize {
     }
     // sends a custom content-type in header and returns the header used as result
     // wrap first arguement of computation ds with helper needed, such as json in this case
-    function requestCustomHeaders() payable {
+    function requestCustomHeaders() public payable {
         request("json(QmdKK319Veha83h6AYgQqhx9YRsJ9MJE7y33oCXyZ4MqHE).headers",
                 "GET",
                 "http://httpbin.org/headers",
@@ -46,7 +35,7 @@ contract UrlRequests is usingOraclize {
                 );
     }
 
-    function requestBasicAuth() payable {
+    function requestBasicAuth() public payable {
         request("QmdKK319Veha83h6AYgQqhx9YRsJ9MJE7y33oCXyZ4MqHE",
                 "GET",
                 "http://httpbin.org/basic-auth/myuser/secretpass",
@@ -54,7 +43,7 @@ contract UrlRequests is usingOraclize {
                 );
     }
 
-    function requestPost() payable {
+    function requestPost() public payable {
         request("QmdKK319Veha83h6AYgQqhx9YRsJ9MJE7y33oCXyZ4MqHE",
                 "POST",
                 "https://api.postcodes.io/postcodes",
@@ -62,7 +51,7 @@ contract UrlRequests is usingOraclize {
                 );
     }
 
-    function requestPut() payable {
+    function requestPut() public payable {
         request("QmdKK319Veha83h6AYgQqhx9YRsJ9MJE7y33oCXyZ4MqHE",
                 "PUT",
                 "http://httpbin.org/anything",
@@ -70,7 +59,7 @@ contract UrlRequests is usingOraclize {
                 );
     }
 
-    function requestCookies() payable {
+    function requestCookies() public payable {
         request("QmdKK319Veha83h6AYgQqhx9YRsJ9MJE7y33oCXyZ4MqHE",
                 "GET",
                 "http://httpbin.org/cookies",
