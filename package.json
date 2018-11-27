@@ -1,0 +1,27 @@
+{
+  "name": "ethereum-examples",
+  "version": "1.0.0",
+  "description": "Some examples of using Oraclize with ethereum smart-contracts.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oraclize/ethereum-examples.git"
+  },
+  "keywords": [
+    "oraclize",
+    "ethereum",
+    "smart-contract"
+  ],
+  "author": "Oraclize.it",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oraclize/ethereum-examples/issues"
+  },
+  "homepage": "https://github.com/oraclize/ethereum-examples#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  }
+}
