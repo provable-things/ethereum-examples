@@ -1,8 +1,9 @@
 const fs = require('fs')
 /*
  * Usage: 
- * pnpm install in root of dir
- * node ./script.js
+ * cd to root of truffle examples dir
+ * pnpm install
+ * node script.js
  */
 const SWARM = 'Swarm.sol'
 const URL = 'UrlRequests.sol'
@@ -14,10 +15,9 @@ const KRAKEN = 'KrakenPriceTicker.sol'
 const BTC = 'BitcoinAddressExample.sol'
 const TWEET = 'StreamrTweetsCounter.sol'
 
-const SOURCE_PREFIX = `./solidity/`
+const SOURCE_PREFIX = `../`
 const CONTRACTS_PATH = `/contracts/`
-const DESTINATION_PREFIX = SOURCE_PREFIX + `truffle-examples/`
-const SOURCE_COMPUTATION_PREFIX = SOURCE_PREFIX + `computation-datasource/`
+const SOURCE_COMPUTATION_PREFIX = `../computation-datasource/`
 
 const SOURCE_PATHS = [
   SOURCE_PREFIX + WOLF,
@@ -32,15 +32,15 @@ const SOURCE_PATHS = [
 ]
 
 const DESTINATION_PATHS = [
-  `${DESTINATION_PREFIX}wolfram-alpha${CONTRACTS_PATH + WOLF}`,
-  `${DESTINATION_PREFIX}swarm${CONTRACTS_PATH + SWARM}`,
-  `${DESTINATION_PREFIX}diesel-price${CONTRACTS_PATH + DIESEL}`,
-  `${DESTINATION_PREFIX}kraken-price-ticker${CONTRACTS_PATH + KRAKEN}`,
-  `${DESTINATION_PREFIX}youtube-views${CONTRACTS_PATH + YOUTUBE}`,
-  `${DESTINATION_PREFIX}bitcoin-balance${CONTRACTS_PATH + BTC}`,
-  `${DESTINATION_PREFIX}streamr${CONTRACTS_PATH + TWEET}`,
-  `${DESTINATION_PREFIX}url-requests${CONTRACTS_PATH + URL}`,
-  `${DESTINATION_PREFIX}delegated-math${CONTRACTS_PATH + MATH}`
+  `./wolfram-alpha${CONTRACTS_PATH + WOLF}`,
+  `./swarm${CONTRACTS_PATH + SWARM}`,
+  `./diesel-price${CONTRACTS_PATH + DIESEL}`,
+  `./kraken-price-ticker${CONTRACTS_PATH + KRAKEN}`,
+  `./youtube-views${CONTRACTS_PATH + YOUTUBE}`,
+  `./bitcoin-balance${CONTRACTS_PATH + BTC}`,
+  `./streamr${CONTRACTS_PATH + TWEET}`,
+  `./url-requests${CONTRACTS_PATH + URL}`,
+  `./delegated-math${CONTRACTS_PATH + MATH}`
 ]
 
 const copyFile = (src, dest) => 
