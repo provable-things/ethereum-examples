@@ -6,8 +6,13 @@ contract UrlRequests is usingOraclize {
 
     event LogNewOraclizeQuery(string description);
     event LogResult(string result);
- 
-    function __callback(bytes32 myid, string memory result) public {
+    
+    constructor() public {
+        oraclize_setProof(proofType_Android | proofStorage_IPFS);
+    }
+
+
+    function __callback(bytes32 myid, string memory result, bytes memory proof) public {
         require(msg.sender == oraclize_cbAddress());
         emit LogResult(result);
     }
@@ -26,7 +31,7 @@ contract UrlRequests is usingOraclize {
         }
     }
     // sends a custom content-type in header and returns the header used as result
-    // wrap first arguement of computation ds with helper needed, such as json in this case
+    // wrap first argument of computation ds with helper needed, such as json in this case
     function requestCustomHeaders() public payable {
         request("json(QmdKK319Veha83h6AYgQqhx9YRsJ9MJE7y33oCXyZ4MqHE).headers",
                 "GET",

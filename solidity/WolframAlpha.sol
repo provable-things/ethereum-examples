@@ -1,33 +1,27 @@
-/*
-    WolframAlpha example
-
-    This contract sends a temperature measure request to WolframAlpha
-*/
-pragma solidity ^0.4.0;
+pragma solidity ^0.5.0;
 
 import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
-
 
 contract WolframAlpha is usingOraclize {
 
     string public temperature;
 
-    event NewOraclizeQuery(string description);
-    event NewTemperatureMeasure(string temperature);
+    event LogNewOraclizeQuery(string description);
+    event LogNewTemperatureMeasure(string temperature);
 
-    function WolframAlpha() public {
-        update();
+    constructor() public {
+        update(); // Update on contract creation...
     }
 
-    function __callback(bytes32 myid, string result) public {
-        if (msg.sender != oraclize_cbAddress()) revert();
+    function __callback(bytes32 myid, string memory result) public {
+        require(msg.sender == oraclize_cbAddress());
         temperature = result;
-        NewTemperatureMeasure(temperature);
-        // do something with the temperature measure..
+        emit LogNewTemperatureMeasure(temperature);
+        // Do something with the temperature measure...
     }
 
     function update() public payable {
-        NewOraclizeQuery("Oraclize query was sent, standing by for the answer..");
+        emit LogNewOraclizeQuery("Oraclize query was sent, standing by for the answer...");
         oraclize_query("WolframAlpha", "temperature in London");
     }
 }
