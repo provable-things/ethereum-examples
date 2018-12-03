@@ -4,9 +4,9 @@
    This contract uses the random-datasource to securely generate off-chain N random bytes
 */
 
-pragma solidity ^0.4.11;
+pragma solidity >= 0.4.11 < 0.5;
 
-import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
+import "github.com/oraclize/ethereum-api/oraclizeAPI_0.4.sol";
 
 contract RandomExample is usingOraclize {
     

@@ -5,8 +5,8 @@
    It uses the ProofShield technology to send back to the contract an on-chain verifiable authenticity proof.
 */
 
-pragma solidity ^0.4.11;
-import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
+pragma solidity >= 0.4.11 < 0.5;
+import "github.com/oraclize/ethereum-api/oraclizeAPI_0.4.sol";
 
 
 // ORACLIZE_API FOLLOWS: FOR THE ACTUAL EXAMPLE CODE, LOOK AT THE BOTTOM!

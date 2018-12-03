@@ -5,7 +5,7 @@
    which is updated every ~60 seconds.
 */
 
-pragma solidity ^0.4.0;
+pragma solidity >= 0.4.1 < 0.5;
 
 // import library manually here, library github linking not working with oraclize browser-solidity
 import "oraclizeLib.sol";
