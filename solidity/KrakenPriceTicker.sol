@@ -1,38 +1,31 @@
-/*
-   Kraken-based ETH/XBT price ticker
-
-   This contract keeps in storage an updated ETH/XBT price,
-   which is updated every ~60 seconds.
-*/
-pragma solidity ^0.4.0;
+pragma solidity ^0.5.0;
 
 import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
-
 
 contract KrakenPriceTicker is usingOraclize {
 
     string public priceETHXBT;
 
-    event NewOraclizeQuery(string description);
-    event NewKrakenPriceTicker(string price);
+    event LogNewOraclizeQuery(string description);
+    event LogNewKrakenPriceTicker(string price);
 
-    function KrakenPriceTicker() public {
+    constructor() public {
         oraclize_setProof(proofType_Android | proofStorage_IPFS);
-        update();
+        update(); // Update price on contract creation...
     }
 
-    function __callback(bytes32 myid, string result, bytes proof) public {
-        if (msg.sender != oraclize_cbAddress()) revert();
+    function __callback(bytes32 myid, string memory result, bytes memory proof) public {
+        require(msg.sender == oraclize_cbAddress());
+        update(); // Recursively update the price stored in the contract...
         priceETHXBT = result;
-        NewKrakenPriceTicker(priceETHXBT);
-        update();
+        emit LogNewKrakenPriceTicker(priceETHXBT);
     }
 
     function update() public payable {
-        if (oraclize_getPrice("URL") > this.balance) {
-            NewOraclizeQuery("Oraclize query was NOT sent, please add some ETH to cover for the query fee");
+        if (oraclize_getPrice("URL") > address(this).balance) {
+            emit LogNewOraclizeQuery("Oraclize query was NOT sent, please add some ETH to cover for the query fee!");
         } else {
-            NewOraclizeQuery("Oraclize query was sent, standing by for the answer..");
+            emit LogNewOraclizeQuery("Oraclize query was sent, standing by for the answer...");
             oraclize_query(60, "URL", "json(https://api.kraken.com/0/public/Ticker?pair=ETHXBT).result.XETHXXBT.c.0");
         }
     }

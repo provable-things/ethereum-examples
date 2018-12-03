@@ -1,44 +1,35 @@
-/*
-    Utilizies computation datasource
-
-    Launches an AWS instance which connects to the streamr BTC tweets stream
-    via websockets, and then counts the amount of BTC tweets, until the set
-    duration, and returns the count
-*/
-
-pragma solidity ^0.4.0;
+pragma solidity ^0.5.0;
 
 import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
 contract StreamrTweetsCounter is usingOraclize {
 
-    uint public btcTweetsLastMinute;
+    uint public numberOfTweets;
 
-    event newOraclizeQuery(string description);
-    event emitResult(string result);
+    event LogResult(string result);
+    event LogNewOraclizeQuery(string description);
 
-
-    function StreamrTweetsCounter() payable {
-        oraclize_setProof(proofType_TLSNotary | proofStorage_IPFS);
-        update();
+    constructor() public {
+        update(); // First check at contract creation... 
     }
 
-    function __callback(bytes32 myid, string result) {
-        if (msg.sender != oraclize_cbAddress()) throw;
-
-        btcTweetsLastMinute = parseInt(result);
-        emitResult(result);
+    function __callback(bytes32 myid, string memory result) public {
+        require(msg.sender == oraclize_cbAddress());
+        numberOfTweets = parseInt(result);
+        emit LogResult(result);
     }
 
-    function update() payable {
-        if (oraclize_getPrice("computation") > this.balance) {
-            newOraclizeQuery("Oraclize query was NOT sent, please add some ETH to cover for the query fee");
+    function update() public payable {
+        if (oraclize_getPrice("computation") > address(this).balance) {
+            emit LogNewOraclizeQuery("Oraclize query was NOT sent, please add some ETH to cover for the query fee");
         } else {
-            newOraclizeQuery("Oraclize query was sent, standing by for the answer...");
-
-            oraclize_query("computation",
-                ["QmWFV2UrcUFMFk5R4iTZdusTRsvqohFwHjyXNH1Yu9v3Nm", // the ipfs multihash of archive
-                "1"] // duration to run stream in minutes
+            emit LogNewOraclizeQuery("Oraclize query was sent, standing by for the answer...");
+            oraclize_query(
+                "computation",
+                [
+                    "QmWFV2UrcUFMFk5R4iTZdusTRsvqohFwHjyXNH1Yu9v3Nm", // The ipfs multihash of archive.
+                    "1" // Desired duration to run the stream (in minutes).
+                ] 
             );
         }
     }

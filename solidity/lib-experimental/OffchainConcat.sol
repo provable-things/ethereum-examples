@@ -12,7 +12,7 @@
 // Ensure you are loading in an incognito window, and in a single session
 // only deploying and then calling the update function
 
-pragma solidity ^0.4.0;
+pragma solidity >= 0.4.1 < 0.5;
 
 // import both libraries manually
 import "oraclizeLib.sol";
