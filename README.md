@@ -10,7 +10,7 @@ Here you can find some code examples showing just how __easy__ it is to integrat
 
 This provisions your contract with the __`oraclize_query()`__ function (and many others!), which makes it trivial to leverage our technology straight away. Head into the __`Solidity`__ directory for more information.
 
-:laptop: Happy developing!
+:computer: Happy developing!
 
 ***
 
