@@ -4,7 +4,7 @@ Here you can find various Solidity examples showing how to use the __Oraclize AP
 
 Alternatively, if you prefer to develop locally, browse into the __`truffle-examples`__ directory to see how __Oraclize__ works in a [__Truffle__](https://www.truffleframework.com/) development environment. Each self-contained example comes with full test coverage so you can see how to create robust, data-rich smart-contracts that leverage the __Oraclize__ service fully.
 
-:laptop: __Happy developing!__
+:computer: __Happy developing!__
 
 ***
 
