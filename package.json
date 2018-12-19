@@ -1,0 +1,13 @@
+{
+  "name": "oraclize-eth-examples",
+  "version": "0.5.0",
+  "description": "Here you can find some code examples showing just how __easy__ it is to integrate the __Oraclize__ Service into your Ethereum smart-contracts! Thanks to our [__Ethereum API__](https://github.com/oraclize/ethereum-api) using __Oraclize__ in your projects couldn't be more straightforward. In Solidity it is as simple as inheriting the __`usingOraclize`__ contract like so:",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oraclize/ethereum-examples.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oraclize/ethereum-examples/issues"
+  },
+  "homepage": "http://www.oraclize.it"
+}
