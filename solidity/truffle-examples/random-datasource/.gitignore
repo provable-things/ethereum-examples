@@ -1,0 +1,13 @@
+*.sw*
+*.yaml
+*.log*
+apikeys.*
+**/build/
+**/node_modules/
+contracts/patched/**/*.sol
+*.env
+
+# exclusions
+
+!shrinkwrap.yaml
+!.gitkeep
