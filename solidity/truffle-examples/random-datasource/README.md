@@ -8,13 +8,13 @@ This repo is to demonstrate how you would set up an Oraclize smart-contract deve
 
 Since the random datasource is currently available on the Ethereum mainnet and on all Ethereum public testnets only (Rinkeby, Kovan, Ropsten-revival); and it is *not integrated yet with private blockchains/testrpc/browser-solidity-vmmode*, you will need to **get a mnemonic passphrase and an infura key** to make the example work.
 
-**A)** Go on the infura website to get an infura key: (https://infura.io)[infura.io]
-The key is a 32 hexadecimal character string.
+**A)** Go on the infura website to get an infura key: [infura.io](https://infura.io).
+The key is a 32 hexadecimal character string
 
 **B)** Get a mnemonic passphrase, an easy way is to get the Metamask one:
-(https://metamask.io/)[metamask.io]
+[metamask.io](https://metamask.io/)
 
-**C)** Create a new file `apikeys.js` or `.env` and add the mnemonic passphrase and the infura key to it, such as:
+**C)** Create a new file `apikeys.js` or `.env` and *add the mnemonic passphrase and the infura key to it*, such as:
 
 ```javascript
 // apikeys.js example
