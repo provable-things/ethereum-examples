@@ -18,6 +18,9 @@
   "homepage": "https://github.com/n/a#readme",
   "dependencies": {
     "ethereum-bridge": "0.6.1",
-    "web3": "1.0.0-beta.35"
+    "truffle": "5.0.6",
+    "typedarray-to-buffer": "3.1.5",
+    "web3": "1.0.0-beta.35",
+    "yaeti": "^1.0.2"
   }
 }
