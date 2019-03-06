@@ -1,7 +1,7 @@
 {
-  "name": "oraclize-examples-using-truffle__computation-datasource-url-requests",
+  "name": "oraclize-examples-using-truffle__computation-datasource-bitcoin-balance",
   "version": "0.1.0",
-  "description": "Testing set up for Oraclize's Url-Requests example contract",
+  "description": "Testing set up for Oraclize's Bitcoin-Balance example contract",
   "main": "README.md",
   "directories": {
     "test": "test"
