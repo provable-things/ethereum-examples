@@ -1,7 +1,7 @@
 {
-  "name": "oraclize-examples-using-truffle__computation-datasource-url-requests",
+  "name": "oraclize-examples-using-truffle__diesel-price",
   "version": "0.1.0",
-  "description": "Testing set up for Oraclize's Url-Requests example contract",
+  "description": "Testing set up for Oraclize's Diesel Price example contract",
   "main": "README.md",
   "directories": {
     "test": "test"
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/n/a#readme",
   "dependencies": {
-    "ethereum-bridge": "0.6.1",
-    "web3": "1.0.0-beta.35"
+    "ethereum-bridge": "0.6.2",
+    "web3": "1.0.0-beta.36"
   }
 }
