@@ -1,6 +1,5 @@
 **/node_modules
 *.sw*
 *.log
-*.yaml
 .node*
 **/build
