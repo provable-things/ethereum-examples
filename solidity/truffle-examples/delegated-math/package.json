@@ -18,6 +18,6 @@
   "homepage": "https://github.com/n/a#readme",
   "dependencies": {
     "ethereum-bridge": "0.6.2",
-    "web3": "1.0.0-beta.47"
+    "web3": "1.0.0-beta.36"
   }
 }
