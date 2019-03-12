@@ -18,11 +18,8 @@ contract('Streamr Tweets Counter Example Tests', accounts => {
   ))
 
   it('Should have logged a new Oraclize query', async () => {
-    const {
-      returnValues: {
-        description
-      }
-    } = await waitForEvent(events.LogNewOraclizeQuery)
+    const event = await waitForEvent(events.LogNewOraclizeQuery)
+    const description = event.returnValues.description
     assert.equal(
     description,
       'Oraclize query was sent, standing by for the answer...',
@@ -31,14 +28,11 @@ contract('Streamr Tweets Counter Example Tests', accounts => {
   })
 
   it('Should retrieve number of tweets over the last minute', async () => {
-    const {
-      returnValues: {
-        result
-      }
-    } = await waitForEvent(events.LogResult)
-    numTweets = result
+    const event = await waitForEvent(events.LogResult)
+    const contractNumTweets = event.returnValues.result
+    numTweets = contractNumTweets
     assert.isAbove(
-      parseInt(result),
+      parseInt(contractNumTweets),
       0,
       'No result was retrieved from the offchain twitter stream!'
     )
