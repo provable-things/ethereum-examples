@@ -1,19 +1,18 @@
 /*
    Oraclize random-datasource example
-
    This contract uses the random-datasource to securely generate off-chain N random bytes
 */
 
-pragma solidity >= 0.4.11 < 0.5;
+pragma solidity ^0.5.0;
 
-import "github.com/oraclize/ethereum-api/oraclizeAPI_0.4.sol";
+import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
 contract RandomExample is usingOraclize {
     
     event newRandomNumber_bytes(bytes);
     event newRandomNumber_uint(uint);
 
-    function RandomExample() {
+    constructor() public {
         oraclize_setProof(proofType_Ledger); // sets the Ledger authenticity proof in the constructor
         update(); // let's ask for N random bytes immediately when the contract is created!
     }
@@ -21,9 +20,9 @@ contract RandomExample is usingOraclize {
     // the callback function is called by Oraclize when the result is ready
     // the oraclize_randomDS_proofVerify modifier prevents an invalid proof to execute this function code:
     // the proof validity is fully verified on-chain
-    function __callback(bytes32 _queryId, string _result, bytes _proof)
+    function __callback(bytes32 _queryId, string memory _result, bytes memory _proof) public
     { 
-        if (msg.sender != oraclize_cbAddress()) throw;
+        require(msg.sender == oraclize_cbAddress());
         
         if (oraclize_randomDS_proofVerify__returnCode(_queryId, _result, _proof) != 0) {
             // the proof verification has failed, do we need to take any action here? (depends on the use case)
@@ -31,17 +30,17 @@ contract RandomExample is usingOraclize {
             // the proof verification has passed
             // now that we know that the random number was safely generated, let's use it..
             
-            newRandomNumber_bytes(bytes(_result)); // this is the resulting random number (bytes)
+            emit newRandomNumber_bytes(bytes(_result)); // this is the resulting random number (bytes)
             
             // for simplicity of use, let's also convert the random bytes to uint if we need
             uint maxRange = 2**(8* 7); // [maxRange - 1] is the highest uint we want to get.The variable maxRange should never be greater than 2^(8*N), where N is the number of random bytes we had asked the datasource to return
-            uint randomNumber = uint(sha3(_result)) % maxRange; // this is an efficient way to get the uint out in the [0, maxRange-1] range
+            uint randomNumber = uint(keccak256(abi.encodePacked(_result))) % maxRange; // this is an efficient way to get the uint out in the [0, maxRange-1] range
             
-            newRandomNumber_uint(randomNumber); // this is the resulting random number (uint)
+            emit newRandomNumber_uint(randomNumber); // this is the resulting random number (uint)
         }
     }
     
-    function update() payable {
+    function update() payable public {
         uint N = 7; // number of random bytes we want the datasource to return
         uint delay = 0; // number of seconds to wait before the execution takes place
         uint callbackGas = 200000; // amount of gas we want Oraclize to set for the callback function
