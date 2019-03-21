@@ -1,7 +1,13 @@
-/*
-   Oraclize random-datasource example
-   This contract uses the random-datasource to securely generate off-chain N random bytes
-*/
+/**
+ * Oraclize Random Datasource Example
+ *
+ * This contract uses the random-datasource to securely generate off-chain
+ * random bytes.
+ *
+ * @notice The random datasource is currently only available on the
+ * ethereum main-net & public test-nets (Ropsten, Rinkeby & Kovan).
+ *
+ */
 pragma solidity >= 0.5.0 < 0.6.0;
 
 import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
@@ -11,7 +17,9 @@ contract RandomExample is usingOraclize {
     event newRandomNumber_bytes(bytes);
     event newRandomNumber_uint(uint);
 
-    constructor() public {
+    constructor()
+        public
+    {
         oraclize_setProof(proofType_Ledger); // sets the Ledger authenticity proof in the constructor
         update(); // let's ask for N random bytes immediately when the contract is created!
     }
@@ -19,7 +27,12 @@ contract RandomExample is usingOraclize {
     // the callback function is called by Oraclize when the result is ready
     // the oraclize_randomDS_proofVerify modifier prevents an invalid proof to execute this function code:
     // the proof validity is fully verified on-chain
-    function __callback(bytes32 _queryId, string memory _result, bytes memory _proof) public
+    function __callback(
+        bytes32 _queryId,
+        string memory _result,
+        bytes memory _proof
+    )
+        public
     {
         require(msg.sender == oraclize_cbAddress());
 
@@ -39,11 +52,13 @@ contract RandomExample is usingOraclize {
         }
     }
 
-    function update() payable public {
+    function update()
+        payable
+        public
+    {
         uint N = 7; // number of random bytes we want the datasource to return
         uint delay = 0; // number of seconds to wait before the execution takes place
         uint callbackGas = 200000; // amount of gas we want Oraclize to set for the callback function
         bytes32 queryId = oraclize_newRandomDSQuery(delay, N, callbackGas); // this function internally generates the correct oraclize_query and returns its queryId
     }
-
 }
