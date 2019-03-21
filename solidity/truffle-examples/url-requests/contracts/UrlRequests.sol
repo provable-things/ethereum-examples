@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity >= 0.5.0 < 0.6.0;
 
 import "./oraclizeAPI.sol";
 
@@ -6,7 +6,7 @@ contract UrlRequests is usingOraclize {
 
     event LogNewOraclizeQuery(string description);
     event LogResult(string result);
-    
+
     constructor() public {
         oraclize_setProof(proofType_Android | proofStorage_IPFS);
     }
