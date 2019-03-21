@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity >= 0.5.0 < 0.6.0;
 
 import "./oraclizeAPI.sol";
 
@@ -10,7 +10,7 @@ contract StreamrTweetsCounter is usingOraclize {
     event LogNewOraclizeQuery(string description);
 
     constructor() public {
-        update(); // First check at contract creation... 
+        update(); // First check at contract creation...
     }
 
     function __callback(bytes32 myid, string memory result) public {
@@ -29,7 +29,7 @@ contract StreamrTweetsCounter is usingOraclize {
                 [
                     "QmWFV2UrcUFMFk5R4iTZdusTRsvqohFwHjyXNH1Yu9v3Nm", // The ipfs multihash of archive.
                     "1" // Desired duration to run the stream (in minutes).
-                ] 
+                ]
             );
         }
     }
