@@ -7,17 +7,32 @@ contract UrlRequests is usingOraclize {
     event LogNewOraclizeQuery(string description);
     event LogResult(string result);
 
-    constructor() public {
+    constructor()
+        public
+    {
         oraclize_setProof(proofType_Android | proofStorage_IPFS);
     }
 
-
-    function __callback(bytes32 myid, string memory result, bytes memory proof) public {
+    function __callback(
+        bytes32 myid,
+        string memory result,
+        bytes memory proof
+    )
+        public
+    {
         require(msg.sender == oraclize_cbAddress());
         emit LogResult(result);
     }
 
-    function request(string memory _query, string memory _method, string memory _url, string memory _kwargs) public payable {
+    function request(
+        string memory _query,
+        string memory _method,
+        string memory _url,
+        string memory _kwargs
+    )
+        public
+        payable
+    {
         if (oraclize_getPrice("computation") > address(this).balance) {
             emit LogNewOraclizeQuery("Oraclize query was NOT sent, please add some ETH to cover for the query fee");
         } else {
@@ -30,9 +45,15 @@ contract UrlRequests is usingOraclize {
             );
         }
     }
-    // sends a custom content-type in header and returns the header used as result
-    // wrap first argument of computation ds with helper needed, such as json in this case
-    function requestCustomHeaders() public payable {
+    /**
+     * @dev Sends a custom content-type in header and returns the header used
+     * as result. Wrap first argument of computation ds with helper needed,
+     * such as json in this case
+     */
+    function requestCustomHeaders()
+        public
+        payable
+    {
         request("json(QmdKK319Veha83h6AYgQqhx9YRsJ9MJE7y33oCXyZ4MqHE).headers",
                 "GET",
                 "http://httpbin.org/headers",
@@ -40,7 +61,10 @@ contract UrlRequests is usingOraclize {
                 );
     }
 
-    function requestBasicAuth() public payable {
+    function requestBasicAuth()
+        public
+        payable
+    {
         request("QmdKK319Veha83h6AYgQqhx9YRsJ9MJE7y33oCXyZ4MqHE",
                 "GET",
                 "http://httpbin.org/basic-auth/myuser/secretpass",
@@ -48,7 +72,10 @@ contract UrlRequests is usingOraclize {
                 );
     }
 
-    function requestPost() public payable {
+    function requestPost()
+        public
+        payable
+    {
         request("QmdKK319Veha83h6AYgQqhx9YRsJ9MJE7y33oCXyZ4MqHE",
                 "POST",
                 "https://api.postcodes.io/postcodes",
@@ -56,7 +83,10 @@ contract UrlRequests is usingOraclize {
                 );
     }
 
-    function requestPut() public payable {
+    function requestPut()
+        public
+        payable
+    {
         request("QmdKK319Veha83h6AYgQqhx9YRsJ9MJE7y33oCXyZ4MqHE",
                 "PUT",
                 "http://httpbin.org/anything",
@@ -64,7 +94,10 @@ contract UrlRequests is usingOraclize {
                 );
     }
 
-    function requestCookies() public payable {
+    function requestCookies()
+        public
+        payable
+    {
         request("QmdKK319Veha83h6AYgQqhx9YRsJ9MJE7y33oCXyZ4MqHE",
                 "GET",
                 "http://httpbin.org/cookies",
