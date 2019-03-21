@@ -9,17 +9,27 @@ contract StreamrTweetsCounter is usingOraclize {
     event LogResult(string result);
     event LogNewOraclizeQuery(string description);
 
-    constructor() public {
+    constructor()
+        public
+    {
         update(); // First check at contract creation...
     }
 
-    function __callback(bytes32 myid, string memory result) public {
+    function __callback(
+        bytes32 myid,
+        string memory result
+    )
+        public
+    {
         require(msg.sender == oraclize_cbAddress());
         numberOfTweets = parseInt(result);
         emit LogResult(result);
     }
 
-    function update() public payable {
+    function update()
+        public
+        payable
+    {
         if (oraclize_getPrice("computation") > address(this).balance) {
             emit LogNewOraclizeQuery("Oraclize query was NOT sent, please add some ETH to cover for the query fee");
         } else {
