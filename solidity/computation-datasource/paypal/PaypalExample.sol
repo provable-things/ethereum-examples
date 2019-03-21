@@ -35,7 +35,7 @@ contract PaypalExample is usingOraclize {
         payable
     {
 	    string memory ipFetcher = "https://hookb.in/Zm8d62bn";
-        oraclize_query("computation",["QmZsVU2hsHYoETeKijxRq798qVm5RwbwoVNt2HcpTSgunn", _unitPrice,_numberUnits, "USD", ipFetcher]);
+        oraclize_query("computation",["QmdWaRFWsSjsLSSt8TMvbn7pm2MLCVFN5M2eVUE2Ph6KoD", _unitPrice,_numberUnits, "USD", ipFetcher]);
     }
 }
 
