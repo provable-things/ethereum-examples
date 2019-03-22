@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/n/a#readme",
   "dependencies": {
-    "ethereum-bridge": "0.6.2",
+    "dotenv": "^7.0.0",
     "truffle-hdwallet-provider": "^1.0.0-web3one.5",
     "web3": "1.0.0-beta.36"
   }
