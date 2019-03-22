@@ -59,7 +59,10 @@ contract RandomExample is usingOraclize {
         }
     }
 
-    function update() payable public {
+    function update()
+        payable
+        public
+    {
         uint N = 7; // number of random bytes we want the datasource to return
         uint delay = 0; // number of seconds to wait before the execution takes place
         uint callbackGas = 200000; // amount of gas we want Oraclize to set for the callback function
