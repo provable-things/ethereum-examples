@@ -1,12 +1,9 @@
-const fs = require('fs')
 const path = require('path')
 const API_PATH = path.resolve(__dirname, 'apikeys.js')
 const HDWalletProvider = require("truffle-hdwallet-provider")
 const { fileExists } = require('./test/utils.js')
 require('dotenv').config()
 
-
-console.log(process.env)
 const getExternalVariable = _variable =>
   fileExists(API_PATH)
     ? require(API_PATH)[_variable]
