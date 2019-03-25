@@ -1,7 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-//const API_PATH = path.resolve(__dirname, '../apikeys.js')
-const API_PATH = path.join(__dirname, '../', 'apikeys.js')
+const API_PATH = path.resolve(__dirname, '../apikeys.js')
 
 const PREFIX = 'Returned error: VM Exception while processing transaction: '
 
