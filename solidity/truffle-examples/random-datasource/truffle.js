@@ -22,7 +22,7 @@ module.exports = {
     ropsten: {
       provider: () => new HDWalletProvider(getExternalVariable('mnemonic'), `https://ropsten.infura.io/v3/${getExternalVariable('infuraKey')}`),
       network_id: 3,
-      gas: 55e5, // Ropsten has a lower block limit than mainnet
+      gas: 47e5,
       gasPrice: 20e9,
       websockets: true
     },
