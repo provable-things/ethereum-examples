@@ -22,12 +22,27 @@ contract('Random Example Tests', async accounts => {
     )
   ))
 
-  it('Should have retuned a new random number from the Oraclize random datasource query', async () => {
-    console.log('Sender address: ', address)
-    const { returnValues } = await waitForEvent(events.newRandomNumber_uint)
-    console.log('Random value returned: ', returnValues['0'])
+  it('Should have logged a new Oraclize query', async () => {
+    const {
+      returnValues: {
+        description
+      }
+    } = await waitForEvent(events.LogNewOraclizeQuery)
+    assert.strictEqual(
+      description,
+      'Oraclize query was sent, standing by for the answer...',
+      'Oraclize query incorrectly logged!'
+    )
+  })
+
+  it('Callback should have logged a new uint random number result event', async () => {
+    const {
+      returnValues : {
+       randomNumber
+      }
+    } = await waitForEvent(events.newRandomNumber_uint)
     assert.isAbove(
-      parseInt(returnValues['0']),
+      parseInt(randomNumber),
       0,
       'A random number should have been retrieved from Oraclize call!'
     )
