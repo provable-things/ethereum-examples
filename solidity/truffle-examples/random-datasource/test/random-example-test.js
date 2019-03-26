@@ -6,7 +6,8 @@ const {
 const Web3 = require('web3')
 const randomExample = artifacts.require('./RandomExample.sol')
 const RINKEBY_WSS = `wss://rinkeby.infura.io/ws/v3/${getInfuraKey()}`
-const web3Socket = new Web3(new Web3.providers.WebsocketProvider(RINKEBY_WSS))
+const ROPSTEN_WSS = `wss://ropsten.infura.io/ws/v3/${getInfuraKey()}`
+const web3Socket = new Web3(new Web3.providers.WebsocketProvider(R_WSS))
 
 contract('Random Example Tests', async accounts => {
 
@@ -46,7 +47,7 @@ contract('Random Example Tests', async accounts => {
       0,
       'A random number should have been retrieved from Oraclize call!'
     )
-  })
+  }).timeout(600000)
 
   it('Should revert on second query attempt due to lack of funds', async () => {
     const expErr = 'Transaction has been reverted'
