@@ -52,7 +52,7 @@ __`❍ npx truffle test --network rinkeby`__
 
 ## :camera: Passing Tests:
 
-[The passing tests!](random-datasource-test.jpg)
+[The passing tests!](random-datasource-tests.jpg)
 
 &nbsp;
 
