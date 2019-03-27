@@ -46,15 +46,15 @@ contract RandomExample is usingOraclize {
             emit newRandomNumber_bytes(bytes(_result)); // emit the resulting random number (in bytes)
 
             /**
-             * for simplicity of use, let's also convert the random bytes to uint:
-             * first, we define the variable maxRange, where maxRange - 1 is the highest uint we
+             * For simplicity of use, let's also convert the random bytes to uint.
+             * First, we define the variable maxRange, where maxRange - 1 is the highest uint we
              * want to get. The variable maxRange should never be greater than 2^(8*N), where N is
              * the number of random bytes we had asked the datasource to return.
-             * finally, we perform the modulo maxRange of the sha3 hash of the random bytes casted
-             * to uint to obtain a random number ∈ [0, maxRange - 1].
+             * Finally, we perform the modulo maxRange of the sha3 hash of the random bytes cast
+             * to uint to obtain a random number in the interval [0, maxRange - 1].
              */
             uint maxRange = 2 ** (8 * 7); // N = 7
-            uint randomNumber = uint(keccak256(abi.encodePacked(_result))) % maxRange; // random number ∈ [0, 2^56 - 1]
+            uint randomNumber = uint(keccak256(abi.encodePacked(_result))) % maxRange; // random number in the interval [0, 2^56 - 1]
 
             emit newRandomNumber_uint(randomNumber); // emit the resulting random number (in uint)
         }
