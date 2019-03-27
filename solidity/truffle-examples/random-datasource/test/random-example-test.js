@@ -1,11 +1,11 @@
 const {
-    waitForEvent,
-    getInfuraKey
+  waitForEvent,
+  getExternalVariable
 } = require('./utils')
 
 const Web3 = require('web3')
 const randomExample = artifacts.require('./RandomExample.sol')
-const RINKEBY_WSS = `wss://rinkeby.infura.io/ws/v3/${getInfuraKey()}`
+const RINKEBY_WSS = `wss://rinkeby.infura.io/ws/v3/${getExternalVariable('infuraKey')}`
 const web3Socket = new Web3(new Web3.providers.WebsocketProvider(RINKEBY_WSS))
 
 contract('Random Example Tests', async accounts => {

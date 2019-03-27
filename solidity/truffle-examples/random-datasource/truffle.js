@@ -1,15 +1,13 @@
+const {
+  fileExists,
+  getExternalVariable,
+} = require('./test/utils.js')
+
 const path = require('path')
 const API_PATH = path.resolve(__dirname, 'apikeys.js')
 const HDWalletProvider = require("truffle-hdwallet-provider")
-const { fileExists } = require('./test/utils.js')
-require('dotenv').config()
 
-const getExternalVariable = _variable =>
-  fileExists(API_PATH)
-    ? require(API_PATH)[_variable]
-    : process.env[_variable]
-    ? process.env[_variable]
-    : (console.log(`Cannot migrate! Please provide '${_variable}' as an environment variable, or export it from '${API_PATH}'!`), process.exit(1))
+require('dotenv').config()
 
 module.exports = {
   networks: {
