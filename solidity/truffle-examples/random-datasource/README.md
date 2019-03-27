@@ -6,13 +6,11 @@ This repo is to demonstrate how you would set up an Oraclize smart-contract deve
 
 ## :page_with_curl:  _Instructions_
 
-The random datasource is currently available on the Ethereum mainnet and on some Ethereum public testnets only (Rinkeby, Kovan, and Ropsten Revival); and it is *not integrated yet with private blockchains/testrpc/browser-solidity-vmmode*, so you will need to **get a mnemonic passphrase and an infura key** to make the example work.
+The random datasource is currently available on the Ethereum mainnet and on some Ethereum public testnets only (Rinkeby, Kovan, and Ropsten Revival); and it is not integrated yet with private blockchains/testrpc/browser-solidity-vmmode, so you will need to get a mnemonic passphrase and an infura key to make the example work.
 
-**1)** Go on the infura website to get an infura key: [infura.io](https://infura.io).
-The key is a 32 HEX characters string
+**1)** Go on the Infura website to get an Infura key: [infura.io](https://infura.io). The key is a 32 HEX characters string
 
-**2)** Get a mnemonic passphrase, an easy way is to get the Metamask one:
-[metamask.io](https://metamask.io/)
+**2)** Get a mnemonic passphrase, an easy way is to get a Metamask one: [metamask.io](https://metamask.io/)
 
 **3)** Fire up your favourite console & clone this repo somewhere:
 
@@ -22,7 +20,7 @@ __`❍ git clone https://github.com/oraclize/ethereum-examples.git`__
 
 __`❍ cd ethereum-examples/solidity/truffle-examples/random-datasource && npm install`__
 
-**5)** In `ethereum-examples/solidity/truffle-examples/random-datasource`, create a new file `apikeys.js` or `.env` and *add the mnemonic passphrase and the infura key to it*, such as:
+**5)** In `ethereum-examples/solidity/truffle-examples/random-datasource`, create a new file `apikeys.js` or `.env` and add the mnemonic passphrase and the Infura key to it, such as:
 
 ```javascript
 // apikeys.js example
@@ -60,7 +58,7 @@ __`❍ npx truffle test --network rinkeby`__
 
 ## :black_nib: Notes:
 
-__❍___ Note that the Infura key and the Metamask passphrase must be kept secure. The ones provided in the readme are just placeholders to help the user with the tutorial.
+__❍__ Note that your own Infura key and the Metamask passphrase must be kept secure. The ones provided here are simply placeholders.
 
 __❍__ If you have any issues, head on over to our [Gitter](https://gitter.im/oraclize/ethereum-api?raw=true) channel to get timely support!
 
