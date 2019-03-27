@@ -6,8 +6,7 @@ const {
 const Web3 = require('web3')
 const randomExample = artifacts.require('./RandomExample.sol')
 const RINKEBY_WSS = `wss://rinkeby.infura.io/ws/v3/${getInfuraKey()}`
-const ROPSTEN_WSS = `wss://ropsten.infura.io/ws/v3/${getInfuraKey()}`
-const web3Socket = new Web3(new Web3.providers.WebsocketProvider(R_WSS))
+const web3Socket = new Web3(new Web3.providers.WebsocketProvider(RINKEBY_WSS))
 
 contract('Random Example Tests', async accounts => {
 
