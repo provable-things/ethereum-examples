@@ -14,14 +14,14 @@ contract PaypalExample is usingOraclize {
     }
 
     function __callback(
-        bytes32 myid,
-        string memory result,
-        bytes memory proof
+        bytes32 _myid,
+        string memory _result,
+        bytes memory _proof
     )
         public
     {
         require(msg.sender == oraclize_cbAddress());
-        emit LogPaymentResult(result);
+        emit LogPaymentResult(_result);
     }
     /**
      * @dev This example will require a newly generated hookb.in, the following
@@ -35,7 +35,7 @@ contract PaypalExample is usingOraclize {
         payable
     {
 	    string memory ipFetcher = "https://hookb.in/Zm8d62bn";
-        oraclize_query("computation",["QmdWaRFWsSjsLSSt8TMvbn7pm2MLCVFN5M2eVUE2Ph6KoD", _unitPrice,_numberUnits, "USD", ipFetcher]);
+        oraclize_query("computation", ["QmdWaRFWsSjsLSSt8TMvbn7pm2MLCVFN5M2eVUE2Ph6KoD", _unitPrice, _numberUnits, "USD", ipFetcher]);
     }
 }
 

@@ -16,13 +16,13 @@ contract WolframAlpha is usingOraclize {
     }
 
     function __callback(
-        bytes32 myid,
-        string memory result
+        bytes32 _myid,
+        string memory _result
     )
         public
     {
         require(msg.sender == oraclize_cbAddress());
-        temperature = result;
+        temperature = _result;
         emit LogNewTemperatureMeasure(temperature);
         // Do something with the temperature measure...
     }

@@ -16,14 +16,14 @@ contract DieselPrice is usingOraclize {
     }
 
     function __callback(
-        bytes32 myid,
-        string memory result
+        bytes32 _myid,
+        string memory _result
     )
         public
     {
         require(msg.sender == oraclize_cbAddress());
-        emit LogNewDieselPrice(result);
-        dieselPriceUSD = parseInt(result, 2); // Let's save it as cents...
+        emit LogNewDieselPrice(_result);
+        dieselPriceUSD = parseInt(_result, 2); // Let's save it as cents...
         // Now do something with the USD Diesel price...
     }
 
