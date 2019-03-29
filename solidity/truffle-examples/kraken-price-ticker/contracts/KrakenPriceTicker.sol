@@ -17,15 +17,15 @@ contract KrakenPriceTicker is usingOraclize {
     }
 
     function __callback(
-        bytes32 myid,
-        string memory result,
-        bytes memory proof
+        bytes32 _myid,
+        string memory _result,
+        bytes memory _proof
     )
         public
     {
         require(msg.sender == oraclize_cbAddress());
         update(); // Recursively update the price stored in the contract...
-        priceETHXBT = result;
+        priceETHXBT = _result;
         emit LogNewKrakenPriceTicker(priceETHXBT);
     }
 
