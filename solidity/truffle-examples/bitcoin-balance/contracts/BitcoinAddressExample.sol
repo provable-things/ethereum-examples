@@ -15,13 +15,13 @@ contract BitcoinBalanceExample is usingOraclize {
     }
 
     function __callback(
-        bytes32 myid,
-        string memory result
+        bytes32 _myid,
+        string memory _result
     )
         public
     {
         require(msg.sender == oraclize_cbAddress());
-        balance = parseInt(result, 8);
+        balance = parseInt(_result, 8);
         emit LogBitcoinAddressBalance(balance);
     }
 
@@ -31,6 +31,6 @@ contract BitcoinBalanceExample is usingOraclize {
         public
         payable
     {
-        oraclize_query("computation",["QmYe37uvAUvZZ8ksV726BZt6dJFWP764sTPisNQtuDZVom", _bitcoinAddress]);
+        oraclize_query("computation", ["QmYe37uvAUvZZ8ksV726BZt6dJFWP764sTPisNQtuDZVom", _bitcoinAddress]);
     }
 }

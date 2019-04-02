@@ -14,23 +14,23 @@ contract DelegatedMath is usingOraclize {
     }
 
     function __callback(
-        bytes32 myid,
-        string memory result,
-        bytes memory proof
+        bytes32 _myid,
+        string memory _result,
+        bytes memory _proof
     )
         public
     {
         require(msg.sender == oraclize_cbAddress());
-        emit LogOperationResult(parseInt(result));
+        emit LogOperationResult(parseInt(_result));
     }
 
     function delegateOperation(
-        string memory firstOperand,
-        string memory secondOperand
+        string memory _firstOperand,
+        string memory _secondOperand
     )
         public
         payable
     {
-        oraclize_query("computation",["Qmc8jmuT47cPWadF8ZhErGXj7J4VEp5H29knukCGirsN19", firstOperand, secondOperand]);
+        oraclize_query("computation", ["Qmc8jmuT47cPWadF8ZhErGXj7J4VEp5H29knukCGirsN19", _firstOperand, _secondOperand]);
     }
 }

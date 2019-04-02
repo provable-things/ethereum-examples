@@ -43,7 +43,7 @@ contract RandomExample is usingOraclize {
             // the proof verification has passed
             // now that we know that the random number was safely generated, let's use it...
 
-            emit newRandomNumber_bytes(bytes(_result)); // emit the resulting random number (in bytes)
+            emit newRandomNumber_bytes(bytes(_result)); // emit the random bytes result
 
             /**
              * For simplicity of use, let's also convert the random bytes to uint.
@@ -56,7 +56,7 @@ contract RandomExample is usingOraclize {
             uint maxRange = 2 ** (8 * 7); // N = 7
             uint randomNumber = uint(keccak256(abi.encodePacked(_result))) % maxRange; // random number in the interval [0, 2^56 - 1]
 
-            emit newRandomNumber_uint(randomNumber); // emit the resulting random number (in uint)
+            emit newRandomNumber_uint(randomNumber); // emit the resulting random number (as a uint)
         }
     }
 
@@ -67,7 +67,7 @@ contract RandomExample is usingOraclize {
         uint N = 7; // number of random bytes we want the datasource to return
         uint delay = 0; // number of seconds to wait before the execution takes place
         uint callbackGas = 200000; // amount of gas we want Oraclize to set for the callback function
-        emit LogNewOraclizeQuery("Oraclize query was sent, standing by for the answer...");
         bytes32 queryId = oraclize_newRandomDSQuery(delay, N, callbackGas); // this function internally generates the correct oraclize_query and returns its queryId
+        emit LogNewOraclizeQuery("Oraclize query was sent, standing by for the answer...");
     }
 }

@@ -16,13 +16,13 @@ contract YoutubeViews is usingOraclize {
     }
 
     function __callback(
-        bytes32 myid,
-        string memory result
+        bytes32 _myid,
+        string memory _result
     )
         public
     {
         require(msg.sender == oraclize_cbAddress());
-        viewsCount = result;
+        viewsCount = _result;
         emit LogYoutubeViewCount(viewsCount);
         // Do something with viewsCount, like tipping the author if viewsCount > X?
     }

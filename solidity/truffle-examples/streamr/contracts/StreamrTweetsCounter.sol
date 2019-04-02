@@ -16,14 +16,14 @@ contract StreamrTweetsCounter is usingOraclize {
     }
 
     function __callback(
-        bytes32 myid,
-        string memory result
+        bytes32 _myid,
+        string memory _result
     )
         public
     {
         require(msg.sender == oraclize_cbAddress());
-        numberOfTweets = parseInt(result);
-        emit LogResult(result);
+        numberOfTweets = parseInt(_result);
+        emit LogResult(_result);
     }
 
     function update()

@@ -14,14 +14,14 @@ contract UrlRequests is usingOraclize {
     }
 
     function __callback(
-        bytes32 myid,
-        string memory result,
-        bytes memory proof
+        bytes32 _myid,
+        string memory _result,
+        bytes memory _proof
     )
         public
     {
         require(msg.sender == oraclize_cbAddress());
-        emit LogResult(result);
+        emit LogResult(_result);
     }
 
     function request(
