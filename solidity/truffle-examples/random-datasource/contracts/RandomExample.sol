@@ -67,7 +67,7 @@ contract RandomExample is usingOraclize {
         uint N = 7; // number of random bytes we want the datasource to return
         uint delay = 0; // number of seconds to wait before the execution takes place
         uint callbackGas = 200000; // amount of gas we want Oraclize to set for the callback function
-        emit LogNewOraclizeQuery("Oraclize query was sent, standing by for the answer...");
         bytes32 queryId = oraclize_newRandomDSQuery(delay, N, callbackGas); // this function internally generates the correct oraclize_query and returns its queryId
+        emit LogNewOraclizeQuery("Oraclize query was sent, standing by for the answer...");
     }
 }
