@@ -43,7 +43,7 @@ contract RandomExample is usingOraclize {
             // the proof verification has passed
             // now that we know that the random number was safely generated, let's use it...
 
-            emit newRandomNumber_bytes(bytes(_result)); // emit the resulting random number (in bytes)
+            emit newRandomNumber_bytes(bytes(_result)); // emit the random bytes result
 
             /**
              * For simplicity of use, let's also convert the random bytes to uint.
@@ -56,7 +56,7 @@ contract RandomExample is usingOraclize {
             uint maxRange = 2 ** (8 * 7); // N = 7
             uint randomNumber = uint(keccak256(abi.encodePacked(_result))) % maxRange; // random number in the interval [0, 2^56 - 1]
 
-            emit newRandomNumber_uint(randomNumber); // emit the resulting random number (in uint)
+            emit newRandomNumber_uint(randomNumber); // emit the resulting random number (as a uint)
         }
     }
 
