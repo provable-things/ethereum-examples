@@ -8,9 +8,9 @@ Alternatively, if you prefer to develop locally, browse into the __`truffle-exam
 
 ***
 
-### :black_nib: __Notes__
+### :black_nib: __Features!__
 
-The following is a list of the features you will find amongst the examples, along with link to the pertinent example(s):
+The following is a list of the features you can find amongst the samples in this repo, along with links to the pertinent example(s):
 
 * Sending simple __URL Queries!__ [#1](./DieselPrice.sol).
 * Scheduling a query for a __future date__! [#1](./KrakenPriceTicker.sol).
@@ -34,4 +34,4 @@ __Coming Soon!__
 
 ### :loudspeaker: __Support__
 
-If you need any help working with the examples here, you can get timely support in the [__Oraclize Gitter__](https://gitter.im/oraclize) channel.
+If you need any help when working with the examples here, you can always get timely support in the [__Oraclize Gitter channel here__](https://gitter.im/oraclize)!
