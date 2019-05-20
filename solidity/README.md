@@ -10,17 +10,18 @@ Alternatively, if you prefer to develop locally, browse into the __`truffle-exam
 
 ### :black_nib: __Notes__
 
-This is a list of the features you will find amongst the examples, along with a reference to the relevant example:
+The following is a list of the features you will find amongst the examples, along with link to the pertinent example(s):
 
-* Sending simple __URL Queries!__ [#1](./DieselPrice.sol)
-* Scheduling a query for a __future date__! [#1](./KrakenPriceTicker.sol)
-* Sending calls __recursively__! [#1](./KrakenPriceTicker.sol)
-* Requesting a __TLSNotary__ authenticity __proof!__ [#1](./computation-datasource/delegated-math/DelegatedMath.sol)
-* Requesting an __Android__ authenticity __proof!__ [#1](./KrakenPriceTicker.sol)
-* Leveraging __JSONPATH__ parsing helpers! [#1](./KrakenPriceTicker.sol)
-* Leveraging __XPATH__ parsing helpers! [#1](./DieselPricePeg.sol)  [#2](./YoutubeViews.sol)
-* Using the __computation datasouce__! [#1](./computation-datasource/url-requests/urlRequests.sol) [#2](./computation-datasource/streamr/StreamrTweetsCounter.sol)
-* Using the __WolframAlpha__ datasource! [#1](./WolframAlpha.sol)
+* Sending simple __URL Queries!__ ([Example #1](./DieselPrice.sol))
+* Scheduling a query for a __future date__! ([Example #1](./KrakenPriceTicker.sol))
+* Sending calls __recursively__! ([Example #1](./KrakenPriceTicker.sol))
+* Requesting a __TLSNotary__ authenticity __proof!__ ([Example #1](./computation-datasource/delegated-math/DelegatedMath.sol))
+* Requesting an __Android__ authenticity __proof!__ ([Example #1](./KrakenPriceTicker.sol))
+* Leveraging __JSONPATH__ parsing helpers! ([Example #1](./KrakenPriceTicker.sol))
+* Using __IPFS__ for proof storage! ([Example #1](./UrlRequests.sol))
+* Leveraging __XPATH__ parsing helpers! ([Example #1](./DieselPricePeg.sol), [example #2](./YoutubeViews.sol))
+* Using the __computation datasouce__! ([Example #1](./computation-datasource/url-requests/urlRequests.sol), [example #2](./computation-datasource/streamr/StreamrTweetsCounter.sol))
+* Using the __WolframAlpha__ datasource! ([Example #1](./WolframAlpha.sol))
 
 __Coming Soon!__
 
