@@ -16,6 +16,7 @@ This is a list of the features you will find amongst the examples, along with a 
 * Scheduling a query for a __future date__! [#1](./KrakenPriceTicker.sol)
 * Sending calls __recursively__! [#1](./KrakenPriceTicker.sol)
 * Requesting a __TLSNotary__ authenticity __proof!__ [#1](./computation-datasource/delegated-math/DelegatedMath.sol)
+* Requesting an __Android__ authenticity __proof!__ [#1](./KrakenPriceTicker.sol)
 * Leveraging __JSONPATH__ parsing helpers! [#1](./KrakenPriceTicker.sol)
 * Leveraging __XPATH__ parsing helpers! [#1](./DieselPricePeg.sol)  [#2](./YoutubeViews.sol)
 * Using the __computation datasouce__! [#1](./computation-datasource/url-requests/urlRequests.sol) [#2](./computation-datasource/streamr/StreamrTweetsCounter.sol)
