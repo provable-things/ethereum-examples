@@ -8,18 +8,20 @@ Alternatively, if you prefer to develop locally, browse into the __`truffle-exam
 
 ***
 
-### :black_nib: __Notes__
+### :black_nib: __Features!__
 
-This is a list of the features you will find amongst the examples, along with a reference to the relevant example:
+The following is a list of the features you can find amongst the samples in this repo, along with links to the pertinent example(s):
 
-* Sending simple __URL Queries!__ [#1](./DieselPrice.sol)
-* Scheduling a query for a __future date__! [#1](./KrakenPriceTicker.sol)
-* Sending calls __recursively__! [#1](./KrakenPriceTicker.sol)
-* Requesting __TLSNotary__ authenticity __proofs!__ [#1](./KrakenPriceTicker.sol)
-* Leveraging __JSONPATH__ parsing helpers! [#1](./KrakenPriceTicker.sol)
-* Leveraging __XPATH__ parsing helpers! [#1](./DieselPricePeg.sol)  [#2](./YoutubeViews.sol)
-* Using the __computation datasouce__! [#1](./computation-datasource/url-requests/urlRequests.sol) [#2](./computation-datasource/streamr/StreamrTweetsCounter.sol)
-* Using the __WolframAlpha__ datasource! [#1](./WolframAlpha.sol)
+* Sending simple __URL Queries!__ [#1](./DieselPrice.sol).
+* Scheduling a query for a __future date__! [#1](./KrakenPriceTicker.sol).
+* Sending calls __recursively__! [#1](./KrakenPriceTicker.sol).
+* Requesting a __TLSNotary__ authenticity __proof!__ [#1](./computation-datasource/delegated-math/DelegatedMath.sol), [#2](./compuation-datasource/paypal/PaypalExample.sol), & [#3](./contracts/GasPriceOracle.sol).
+* Requesting an __Android__ authenticity __proof!__ [#1](./KrakenPriceTicker.sol) & [#2](./computation-datasource/url-requests/UrlRequests.sol).
+* Leveraging __JSONPATH__ parsing helpers! [#1](./KrakenPriceTicker.sol).
+* Using __IPFS__ for proof storage! [#1](./UrlRequests.sol), [#2](./KrakenPriceTicker.sol) & [#3](./compuation-datasource/delegated-math/DelegatedMath.sol).
+* Leveraging __XPATH__ parsing helpers! [#1](./DieselPricePeg.sol) & [#2](./YoutubeViews.sol).
+* Using the __computation datasouce__! [#1](./computation-datasource/url-requests/urlRequests.sol), [#2](./computation-datasource/streamr/StreamrTweetsCounter.sol) & [#3](./computation-datasource/bitcoin/BitcoinBalanceExample.sol).
+* Using the __WolframAlpha__ datasource! [#1](./WolframAlpha.sol).
 
 __Coming Soon!__
 
@@ -32,4 +34,4 @@ __Coming Soon!__
 
 ### :loudspeaker: __Support__
 
-If you need any help working with the examples here, you can get timely support in the [__Oraclize Gitter__](https://gitter.im/oraclize) channel.
+If you need any help when working with the examples here, you can always get timely support in the [__Oraclize Gitter channel here__](https://gitter.im/oraclize)!
