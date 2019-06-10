@@ -1,76 +1,132 @@
-/*
-   Oraclize "relaxed" random-datasource example
+/**
+ * @notice  Provable Random Datasource Example - Relaxed Commit Version
+ *
+ *          This contract uses the random-datasource to securely generate
+ *          off-chain random bytes. The relaxed commit parameters result in a
+ *          greater chance of a passing proof in exchange for lower security
+ *          guarantees.
+ *
+ *          The random datasource is currently only available on the
+ *          ethereum main-net & public test-nets (Ropsten, Rinkeby & Kovan).
+ *
+ */
+pragma solidity >= 0.5 < 0.6;
 
-   This contract uses the random-datasource to securely generate off-chain N random bytes
+import "github.com/oraclize/ethereum-api/oraclizeAPI_0.5.sol";
 
-    Lower security guarantees than default setting
-*/
+contract RandomRelaxedExample is usingOraclize {
 
-pragma solidity >= 0.4.11 < 0.5;
+    uint256 NUM_RANDOM_BYTES_REQUESTED = 7;
+    event LogNewOraclizeQuery(string _description);
+    event generatedRandomNumber(uint256 _randomUint);
 
-import "github.com/oraclize/ethereum-api/oraclizeAPI_0.4.sol";
-
-contract RandomExample is usingOraclize {
-    
-    event newRandomNumber_bytes(bytes);
-    event newRandomNumber_uint(uint);
-
-    function RandomExample() {
-        oraclize_setProof(proofType_Ledger); // sets the Ledger authenticity proof in the constructor
-        update(); // let's ask for N random bytes immediately when the contract is created!
+    constructor()
+        public
+    {
+        oraclize_setProof(proofType_Ledger);
+        update();
     }
 
-    // the callback function is called by Oraclize when the result is ready
-    // the oraclize_randomDS_proofVerify modifier prevents an invalid proof to execute this function code:
-    // the proof validity is fully verified on-chain
-    function __callback(bytes32 _queryId, string _result, bytes _proof)
+    function __callback(
+        bytes32 _queryId,
+        string memory _result,
+        bytes memory _proof
+    )
+        public
     {
-        if (msg.sender != oraclize_cbAddress()) throw;
-
-        if (oraclize_randomDS_proofVerify__returnCode(_queryId, _result, _proof) != 0) {
-            // the proof verification has failed, do we need to take any action here? (depends on the use case)
+        require(msg.sender == oraclize_cbAddress());
+        if (
+            oraclize_randomDS_proofVerify__returnCode(
+                _queryId,
+                _result,
+                _proof
+            ) != 0
+        ) {
+            /**
+             * @notice  The proof verification has failed! Handle this case
+             *          however you see fit.
+             */
         } else {
-            // the proof verification has passed
-            // now that we know that the random number was safely generated, let's use it..
-
-            newRandomNumber_bytes(bytes(_result)); // this is the resulting random number (bytes)
-
-            // for simplicity of use, let's also convert the random bytes to uint if we need
-            uint maxRange = 2**(8* 7); // this is the highest uint we want to get. It should never be greater than 2^(8*N), where N is the number of random bytes we had asked the datasource to return
-            uint randomNumber = uint(sha3(_result)) % maxRange; // this is an efficient way to get the uint out in the [0, maxRange] range
-
-            newRandomNumber_uint(randomNumber); // this is the resulting random number (uint)
+            /**
+             *
+             * @notice  The proof verifiction has passed!
+             *
+             *          Let's convert the random bytes received from the query
+             *          to a `uint256`. To do so, We define the variable
+             *          maxRange, where maxRange - 1 is the highest uint256 we
+             *          want to get. The variable maxRange should never be
+             *          greater than: 2 ^ (8 * NUM_RANDOM_BYTES_REQUESTED).
+             *
+             *          Then we perform the modulo `maxRange` of the keccak256
+             *          hash of the random bytes cast to `uint256` to obtain a
+             *          random number in the interval [0, maxRange - 1].
+             *
+             */
+            uint256 maxRange = 2 ** (8 * 7);
+            uint256 randomNumber = uint256(keccak256(abi.encodePacked(_result))) % maxRange;
+            emit generatedRandomNumber(randomNumber);
         }
     }
 
-    function update() payable {
-        uint N = 7; // number of random bytes we want the datasource to return
-        uint delay = 0; // number of seconds to wait before the execution takes place
-        uint callbackGas = 200000; // amount of gas we want Oraclize to set for the callback function
-        bytes32 queryId = oraclize_newRandomDSQuery(delay, N, callbackGas); // this function internally generates the correct oraclize_query and returns its queryId
+    function update()
+        public
+        payable
+    {
+        uint256 QUERY_EXECUTION_DELAY = 0;
+        uint256 GAS_FOR_CALLBACK = 200000;
+        oraclize_newRandomDSQuery(
+            QUERY_EXECUTION_DELAY,
+            NUM_RANDOM_BYTES_REQUESTED,
+            GAS_FOR_CALLBACK
+        );
+        emit LogNewOraclizeQuery(
+            "Oraclize query was sent, standing by for the answer..."
+        );
     }
-
-    // overrides Random DS function from oraclizeAPI
-    // with more laxed one that should fail much less from re-orgs.
-    // Edit is in the inline assembly.
-    function oraclize_newRandomDSQuery(uint _delay, uint _nbytes, uint _customGasLimit) internal returns (bytes32){
+    /**
+     *
+     * @notice  This overrides the Random Datasource function from `oraclizeAPI`
+     *          with a more relaxed one that should fail due to re-orgs much
+     *          less frequently.
+     *
+     */
+    function oraclize_newRandomDSQuery(
+        uint256 _delay,
+        uint256 _nbytes,
+        uint256 _customGasLimit
+    )
+        internal
+        returns (bytes32 _queryId)
+    {
         require((_nbytes > 0) && (_nbytes <= 32));
-        // Convert from seconds to ledger timer ticks
         _delay *= 10;
         bytes memory nbytes = new bytes(1);
-        nbytes[0] = byte(_nbytes);
+        nbytes[0] = byte(uint8(_nbytes));
         bytes memory unonce = new bytes(32);
         bytes memory sessionKeyHash = new bytes(32);
         bytes32 sessionKeyHash_bytes32 = oraclize_randomDS_getSessionPubKeyHash();
         assembly {
             mstore(unonce, 0x20)
-            // Here is the edit: removes xoring of last blockhash with some
-            // current block vars, with that of a block committed for a modulo range
-            // this will lower chance of false proof fails, expected factor of n (6 in below case),
-            // Note this does lower the security guarantees
-            mstore(add(unonce, 0x20), blockhash(sub(sub(number, 1), mod(number, 6))))
-            // original
-            // mstore(add(unonce, 0x20), xor(blockhash(sub(number, 1)), xor(coinbase, timestamp)))
+            /**
+             *
+             * @dev Here is the edit: It removes xoring of last blockhash with
+             *      some current block variables, with that of a block committed
+             *      for a modulo range. This will lower chance of false proof
+             *      fails, by an expected factor of `NUM_RANDOM_BYTES_REQUESTED`.
+             *
+             *      The original function reads:
+             *
+             *      mstore(
+             *          add(unonce, 0x20),
+             *          xor(blockhash(sub(number, 1)),
+             *          xor(coinbase, timestamp))
+             *      )
+             *
+             */
+            mstore(
+                add(unonce, 0x20),
+                blockhash(sub(sub(number, 1), mod(number, 6)))
+            )
             mstore(sessionKeyHash, 0x20)
             mstore(add(sessionKeyHash, 0x20), sessionKeyHash_bytes32)
         }
@@ -89,18 +145,52 @@ contract RandomExample is usingOraclize {
 
         assembly {
             let x := mload(add(delay_bytes8, 0x20))
-            mstore8(add(delay_bytes8_left, 0x27), div(x, 0x100000000000000000000000000000000000000000000000000000000000000))
-            mstore8(add(delay_bytes8_left, 0x26), div(x, 0x1000000000000000000000000000000000000000000000000000000000000))
-            mstore8(add(delay_bytes8_left, 0x25), div(x, 0x10000000000000000000000000000000000000000000000000000000000))
-            mstore8(add(delay_bytes8_left, 0x24), div(x, 0x100000000000000000000000000000000000000000000000000000000))
-            mstore8(add(delay_bytes8_left, 0x23), div(x, 0x1000000000000000000000000000000000000000000000000000000))
-            mstore8(add(delay_bytes8_left, 0x22), div(x, 0x10000000000000000000000000000000000000000000000000000))
-            mstore8(add(delay_bytes8_left, 0x21), div(x, 0x100000000000000000000000000000000000000000000000000))
-            mstore8(add(delay_bytes8_left, 0x20), div(x, 0x1000000000000000000000000000000000000000000000000))
+            mstore8(
+                add(delay_bytes8_left, 0x27),
+                div(x, 0x100000000000000000000000000000000000000000000000000000000000000)
+            )
+            mstore8(
+                add(delay_bytes8_left, 0x26),
+                div(x, 0x1000000000000000000000000000000000000000000000000000000000000)
+            )
+            mstore8(
+                add(delay_bytes8_left, 0x25),
+                div(x, 0x10000000000000000000000000000000000000000000000000000000000)
+            )
+            mstore8(
+                add(delay_bytes8_left, 0x24),
+                div(x, 0x100000000000000000000000000000000000000000000000000000000)
+            )
+            mstore8(
+                add(delay_bytes8_left, 0x23),
+                div(x, 0x1000000000000000000000000000000000000000000000000000000)
+            )
+            mstore8(
+                add(delay_bytes8_left, 0x22),
+                div(x, 0x10000000000000000000000000000000000000000000000000000)
+            )
+            mstore8(
+                add(delay_bytes8_left, 0x21),
+                div(x, 0x100000000000000000000000000000000000000000000000000)
+            )
+            mstore8(
+                add(delay_bytes8_left, 0x20),
+                div(x, 0x1000000000000000000000000000000000000000000000000)
+            )
 
         }
 
-        oraclize_randomDS_setCommitment(queryId, keccak256(delay_bytes8_left, args[1], sha256(args[0]), args[2]));
+        oraclize_randomDS_setCommitment(
+            queryId,
+            keccak256(
+                abi.encodePacked(
+                    delay_bytes8_left,
+                    args[1],
+                    sha256(args[0]),
+                    args[2]
+                )
+            )
+        );
         return queryId;
     }
 }
