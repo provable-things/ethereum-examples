@@ -14,6 +14,9 @@ import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
 contract RandomExample is usingOraclize {
 
+    uint256 NUM_RANDOM_BYTES_REQUESTED = 7;
+    uint256 constant MAX_INT_FROM_BYTE = 256;
+
     event LogNewOraclizeQuery(string description);
     event generatedRandomNumber(uint256 randomNumber);
 
@@ -50,18 +53,21 @@ contract RandomExample is usingOraclize {
              * @notice  The proof verifiction has passed!
              *
              *          Let's convert the random bytes received from the query
-             *          to a `uint256`. To do so, We define the variable
-             *          maxRange, where maxRange - 1 is the highest uint256 we
-             *          want to get. The variable maxRange should never be
-             *          greater than: 2 ^ (8 * NUM_RANDOM_BYTES_REQUESTED).
+             *          to a `uint256`.
              *
-             *          Then we perform the modulo `maxRange` of the keccak256
-             *          hash of the random bytes cast to `uint256` to obtain a
-             *          random number in the interval [0, maxRange - 1].
+             *          To do so, We define the variable `ceiling`, where
+             *          `ceiling - 1` is the highest `uint256` we want to get.
+             *          The variable `ceiling` should never be greater than:
+             *          `(MAX_INT_FROM_BYTE ^ NUM_RANDOM_BYTES_REQUESTED) - 1`.
+             *
+             *          By hashing the random bytes and casting them to a
+             *          `uint256` we can then modulo that number by our ceiling
+             *          in order to get a random number within the desired
+             *          range of [0, ceiling - 1].
              *
              */
-            uint256 maxRange = 2 ** (8 * 7);
-            uint256 randomNumber = uint256(keccak256(abi.encodePacked(_result))) % maxRange;
+            uint256 ceiling = (MAX_INT_FROM_BYTE ** NUM_RANDOM_BYTES_REQUESTED) - 1;
+            uint256 randomNumber = uint256(keccak256(abi.encodePacked(_result))) % ceiling;
             emit generatedRandomNumber(randomNumber);
         }
     }
@@ -72,7 +78,6 @@ contract RandomExample is usingOraclize {
     {
         uint256 QUERY_EXECUTION_DELAY = 0;
         uint256 GAS_FOR_CALLBACK = 200000;
-        uint256 NUM_RANDOM_BYTES_REQUESTED = 7;
         oraclize_newRandomDSQuery(
             QUERY_EXECUTION_DELAY,
             NUM_RANDOM_BYTES_REQUESTED,
