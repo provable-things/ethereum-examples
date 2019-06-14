@@ -16,8 +16,8 @@ import "github.com/oraclize/ethereum-api/oraclizeAPI_0.5.sol";
 
 contract RandomRelaxedExample is usingOraclize {
 
-    uint256 NUM_RANDOM_BYTES_REQUESTED = 7;
     uint256 constant MAX_INT_FROM_BYTE = 256;
+    uint256 constant NUM_RANDOM_BYTES_REQUESTED = 7;
 
     event LogNewOraclizeQuery(string _description);
     event generatedRandomNumber(uint256 _randomUint);
