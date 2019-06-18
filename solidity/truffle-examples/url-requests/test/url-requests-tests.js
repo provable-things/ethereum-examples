@@ -128,7 +128,7 @@ contract('Oraclize Example using Truffle', async ([ ACCOUNT_ZERO, ...accounts ])
     })
 
     it('Should log a failed second basic auth request due to lack of funds', async () => {
-      const {events } = await URL_REQUEST_CONTRACTS[1]
+      const { events } = await URL_REQUEST_CONTRACTS[1]
         .methods
         .requestBasicAuth()
         .send({
