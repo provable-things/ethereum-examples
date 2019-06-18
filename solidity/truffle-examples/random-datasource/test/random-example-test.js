@@ -3,9 +3,12 @@ const {
   getExternalVariable
 } = require('./utils')
 
+const RINKEBY_WSS = `wss://rinkeby.infura.io/ws/v3/${
+  getExternalVariable('infuraKey')
+}`
+
 const Web3 = require('web3')
 const randomExample = artifacts.require('./RandomExample.sol')
-const RINKEBY_WSS = `wss://rinkeby.infura.io/ws/v3/${getExternalVariable('infuraKey')}`
 const web3Socket = new Web3(new Web3.providers.WebsocketProvider(RINKEBY_WSS))
 
 contract('Random Example Tests', async accounts => {
@@ -40,7 +43,7 @@ contract('Random Example Tests', async accounts => {
       returnValues : {
        randomNumber
       }
-    } = await waitForEvent(events.newRandomNumber_uint)
+    } = await waitForEvent(events.generatedRandomNumber)
     assert.isAbove(
       parseInt(randomNumber),
       0,

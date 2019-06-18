@@ -1,33 +1,32 @@
 /**
- * Oraclize Random Datasource Example
+ * @notice  Provable Random Datasource Example
  *
- * This contract uses the random-datasource to securely generate off-chain
- * random bytes.
+ *          This contract uses the random-datasource to securely generate
+ *          off-chain random bytes.
  *
- * @notice The random datasource is currently only available on the
- * ethereum main-net & public test-nets (Ropsten, Rinkeby & Kovan).
+ *          The random datasource is currently only available on the
+ *          ethereum main-net & public test-nets (Ropsten, Rinkeby & Kovan).
  *
  */
 pragma solidity >= 0.5.0 < 0.6.0;
 
-import "./oraclizeAPI.sol";
+import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
 contract RandomExample is usingOraclize {
 
+    uint256 constant MAX_INT_FROM_BYTE = 256;
+    uint256 constant NUM_RANDOM_BYTES_REQUESTED = 7;
+
     event LogNewOraclizeQuery(string description);
-    event newRandomNumber_bytes(bytes);
-    event newRandomNumber_uint(uint randomNumber);
+    event generatedRandomNumber(uint256 randomNumber);
 
     constructor()
         public
     {
-        oraclize_setProof(proofType_Ledger); // sets the Ledger authenticity proof in the constructor
-        update(); // let's ask for random bytes immediately when the contract is created!
+        oraclize_setProof(proofType_Ledger);
+        update();
     }
 
-    // the callback function is called by Oraclize when the result is ready
-    // the oraclize_randomDS_proofVerify modifier prevents an invalid proof to execute this function code:
-    // the proof validity is fully verified on-chain
     function __callback(
         bytes32 _queryId,
         string memory _result,
@@ -37,26 +36,39 @@ contract RandomExample is usingOraclize {
     {
         require(msg.sender == oraclize_cbAddress());
 
-        if (oraclize_randomDS_proofVerify__returnCode(_queryId, _result, _proof) != 0) {
-            // the proof verification has failed, do we need to take any action here? (depends on the use case)
-        } else {
-            // the proof verification has passed
-            // now that we know that the random number was safely generated, let's use it...
-
-            emit newRandomNumber_bytes(bytes(_result)); // emit the random bytes result
-
+        if (
+            oraclize_randomDS_proofVerify__returnCode(
+                _queryId,
+                _result,
+                _proof
+            ) != 0
+        ) {
             /**
-             * For simplicity of use, let's also convert the random bytes to uint.
-             * First, we define the variable maxRange, where maxRange - 1 is the highest uint we
-             * want to get. The variable maxRange should never be greater than 2^(8*N), where N is
-             * the number of random bytes we had asked the datasource to return.
-             * Finally, we perform the modulo maxRange of the sha3 hash of the random bytes cast
-             * to uint to obtain a random number in the interval [0, maxRange - 1].
+             * @notice  The proof verification has failed! Handle this case
+             *          however you see fit.
              */
-            uint maxRange = 2 ** (8 * 7); // N = 7
-            uint randomNumber = uint(keccak256(abi.encodePacked(_result))) % maxRange; // random number in the interval [0, 2^56 - 1]
-
-            emit newRandomNumber_uint(randomNumber); // emit the resulting random number (as a uint)
+        } else {
+            /**
+             *
+             * @notice  The proof verifiction has passed!
+             *
+             *          Let's convert the random bytes received from the query
+             *          to a `uint256`.
+             *
+             *          To do so, We define the variable `ceiling`, where
+             *          `ceiling - 1` is the highest `uint256` we want to get.
+             *          The variable `ceiling` should never be greater than:
+             *          `(MAX_INT_FROM_BYTE ^ NUM_RANDOM_BYTES_REQUESTED) - 1`.
+             *
+             *          By hashing the random bytes and casting them to a
+             *          `uint256` we can then modulo that number by our ceiling
+             *          in order to get a random number within the desired
+             *          range of [0, ceiling - 1].
+             *
+             */
+            uint256 ceiling = (MAX_INT_FROM_BYTE ** NUM_RANDOM_BYTES_REQUESTED) - 1;
+            uint256 randomNumber = uint256(keccak256(abi.encodePacked(_result))) % ceiling;
+            emit generatedRandomNumber(randomNumber);
         }
     }
 
@@ -64,10 +76,13 @@ contract RandomExample is usingOraclize {
         payable
         public
     {
-        uint N = 7; // number of random bytes we want the datasource to return
-        uint delay = 0; // number of seconds to wait before the execution takes place
-        uint callbackGas = 200000; // amount of gas we want Oraclize to set for the callback function
-        bytes32 queryId = oraclize_newRandomDSQuery(delay, N, callbackGas); // this function internally generates the correct oraclize_query and returns its queryId
+        uint256 QUERY_EXECUTION_DELAY = 0;
+        uint256 GAS_FOR_CALLBACK = 200000;
+        oraclize_newRandomDSQuery(
+            QUERY_EXECUTION_DELAY,
+            NUM_RANDOM_BYTES_REQUESTED,
+            GAS_FOR_CALLBACK
+        );
         emit LogNewOraclizeQuery("Oraclize query was sent, standing by for the answer...");
     }
 }
