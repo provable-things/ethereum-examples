@@ -38,7 +38,7 @@ __`❍ truffle(develop)> test`__
       ✓ Should be able to call `queryPrice` public getter
       ✓ Contract balance should be 0
       ✓ Query price should be > 0
-      ✓ User cannot make query if msg.value === 0
+      ✓ User cannot make query if msg.value === 0 (43ms)
       ✓ User cannot make query if msg.value < query cost
       ✓ User can make query if msg.value === query cost
       ✓ Query should have emitted event with ETH price in USD (11676ms)
