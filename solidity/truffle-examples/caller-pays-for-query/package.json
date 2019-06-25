@@ -1,7 +1,7 @@
 {
   "name": "oraclize-examples-using-truffle__computation-datasource-kraken-price-ticker",
   "version": "0.1.0",
-  "description": "Testing set up for Oraclize's Kraken-Price-Ticker example contract",
+  "description": "Testing set up for Provable's Caller-Pays-For-Query example contract",
   "main": "README.md",
   "directories": {
     "test": "test"
