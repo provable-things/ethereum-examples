@@ -48,7 +48,6 @@ __`❍ truffle(develop)> test`__
 
   10 passing (12s)
 
-truffle(develop)>
 
 ```
 
