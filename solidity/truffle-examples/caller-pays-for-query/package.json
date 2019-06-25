@@ -1,5 +1,5 @@
 {
-  "name": "oraclize-examples-using-truffle__computation-datasource-kraken-price-ticker",
+  "name": "oraclize-examples-using-truffle__url-datasource-caller-pays-for-query",
   "version": "0.1.0",
   "description": "Testing set up for Provable's Caller-Pays-For-Query example contract",
   "main": "README.md",
