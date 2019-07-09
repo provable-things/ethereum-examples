@@ -1,1 +1,1 @@
-module.exports = deployer => deployer.deploy(artifacts.require("KrakenPriceTicker.sol"))
+module.exports = deployer => deployer.deploy(artifacts.require("EncryptedQuery.sol"))
