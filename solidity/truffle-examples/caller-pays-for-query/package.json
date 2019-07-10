@@ -1,5 +1,5 @@
 {
-  "name": "oraclize-examples-using-truffle__url-datasource-caller-pays-for-query",
+  "name": "provable-examples-using-truffle__url-datasource-caller-pays-for-query",
   "version": "0.1.0",
   "description": "Testing set up for Provable's Caller-Pays-For-Query example contract",
   "main": "README.md",
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/n/a.git"
   },
-  "author": "Oraclize - Greg Kapka",
+  "author": "Provable - Greg Kapka",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/n/a/issues"

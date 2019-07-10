@@ -8,7 +8,7 @@ This repo is set up to show how a Provable smart-contract development environmen
 
 **1)** Fire up your favourite console & clone this repo somewhere:
 
-__`❍ git clone https://github.com/oraclize/ethereum-examples.git`__
+__`❍ git clone https://github.com/provable-things/ethereum-examples.git`__
 
 **2)** Enter this directory & install dependencies:
 

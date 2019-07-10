@@ -1,7 +1,7 @@
 {
-  "name": "oraclize-examples-using-truffle__random-datasource-example",
+  "name": "provable-examples-using-truffle__random-datasource-example",
   "version": "0.1.0",
-  "description": "Testing set up for Oraclize's Random example contract",
+  "description": "Testing set up for Provable's Random example contract",
   "main": "README.md",
   "directories": {
     "test": "test"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/n/a.git"
   },
-  "author": "Oraclize - Riccardo Persiani",
+  "author": "Provable - Riccardo Persiani",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/n/a/issues"
