@@ -94,6 +94,6 @@ __`❍ truffle(develop)> test`__
 
 ## :black_nib: Notes:
 
-__❍__ If you have any issues, head on over to our [Gitter](https://gitter.im/oraclize/ethereum-api?raw=true) channel to get timely support!
+__❍__ If you have any issues, head on over to our [Gitter](https://gitter.im/provable/ethereum-api?raw=true) channel to get timely support!
 
 __*Happy developing!*__

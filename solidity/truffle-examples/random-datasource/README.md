@@ -60,7 +60,7 @@ __`❍ npx truffle test --network rinkeby`__
 
 __❍__ Note that your own Infura key and the Metamask passphrase must be kept secure. The ones provided here are simply placeholders.
 
-__❍__ If you have any issues, head on over to our [Gitter](https://gitter.im/oraclize/ethereum-api?raw=true) channel to get timely support!
+__❍__ If you have any issues, head on over to our [Gitter](https://gitter.im/provable/ethereum-api?raw=true) channel to get timely support!
 
 __*Happy developing!*__
 
