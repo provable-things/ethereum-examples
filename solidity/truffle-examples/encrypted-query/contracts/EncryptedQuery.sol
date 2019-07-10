@@ -12,7 +12,7 @@ contract EncryptedQuery is usingOraclize {
     constructor()
         public
     {
-        update(); // Update price on contract creation...
+        update(); // Update status on contract creation...
     }
 
     function __callback(
