@@ -30,7 +30,7 @@ __`❍ truffle(develop)> test`__
 
 ## :camera: Passing Tests:
 
-[The passing tests!](encrypted-query.jpg)
+[The passing tests!](encrypted-query.png)
 
 &nbsp;
 
