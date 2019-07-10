@@ -4,7 +4,7 @@
 
 This repo is to demonstrate how you would set up an Provable smart-contract development environment using Truffle & the Ethereum-Bridge to do most of the heavy lifting for you. Head on over to the `./test` folder to examine the javascript files that thoroughly test the smart-contract, which latter you will find in `./contracts`.
 
-## :Squirrel: _Encryption_
+## :squirrel: _Query Encryption_
 
 **1)** Decide the Provable query you want to encrypt, the one in this example is:
 
@@ -32,7 +32,9 @@ __`❍  python encrypted_queries_tools.py -e -p 044992e9473b7d90ca54d2886c7addd1
 
 that returns a non-determinist result:
 
-`BMqMhIFTTzsDbUSfPT233dVWB6wp0ksci7R/c6Jezcy3nEsnX7EQTaqRbej3shF7NlOwGRJAs1IBtYS32f6HrexffY+z1XMCHp+W6vFaIpDSVP0sVxiokuO0fr+ePxHOkvUh9x49BSmageBbHM1RB6QY/xhhvwJtssZOspEHvic=`
+```
+BMqMhIFTTzsDbUSfPT233dVWB6wp0ksci7R/c6Jezcy3nEsnX7EQTaqRbej3shF7NlOwGRJAs1IBtYS32f6HrexffY+z1XMCHp+W6vFaIpDSVP0sVxiokuO0fr+ePxHOkvUh9x49BSmageBbHM1RB6QY/xhhvwJtssZOspEHvic=
+```
 
 **5)** Encrypt the second query argument:
 
@@ -40,7 +42,9 @@ __`❍  python encrypted_queries_tools.py -e -p 044992e9473b7d90ca54d2886c7addd1
 
 that returns a non-determinist result:
 
-`BDfT0gaCqtru/YRL/qEDEPTopcKe04wXtkRlDw0PNa8hazsDgKXv1G0pBVaHK5um6eTzAggrLKlXVLSUqI6rVzd9oaDST4Zo1NtLf2iMwWI0yx7sWwuhFY0Ot+OltgHLf8SclyRuHZHiOq+Ubx1pBtFGImYH4yMon1PgR+V9iWqN2gzv`
+```
+BDfT0gaCqtru/YRL/qEDEPTopcKe04wXtkRlDw0PNa8hazsDgKXv1G0pBVaHK5um6eTzAggrLKlXVLSUqI6rVzd9oaDST4Zo1NtLf2iMwWI0yx7sWwuhFY0Ot+OltgHLf8SclyRuHZHiOq+Ubx1pBtFGImYH4yMon1PgR+V9iWqN2gzv
+```
 
 **6)** Use the non-deterministic outputs to send your Provable query:
 
@@ -51,6 +55,8 @@ oraclize_query(
   "BDfT0gaCqtru/YRL/qEDEPTopcKe04wXtkRlDw0PNa8hazsDgKXv1G0pBVaHK5um6eTzAggrLKlXVLSUqI6rVzd9oaDST4Zo1NtLf2iMwWI0yx7sWwuhFY0Ot+OltgHLf8SclyRuHZHiOq+Ubx1pBtFGImYH4yMon1PgR+V9iWqN2gzv"
 );
 ```
+
+&nbsp;
 
 ## :page_with_curl:  _Instructions_
 
