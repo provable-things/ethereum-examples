@@ -44,7 +44,7 @@ BMqMhIFTTzsDbUSfPT233dVWB6wp0ksci7R/c6Jezcy3nEsnX7EQTaqRbej3shF7NlOwGRJAs1IBtYS3
 
 __`❍  python encrypted_queries_tools.py -e -p 044992e9473b7d90ca54d2886c7addd14a61109af202f1c95e218b0c99eb060c7134c4ae46345d0383ac996185762f04997d6fd6c393c86e4325c469741e64eca9 '{"postcodes" : ["OX49 5NU", "M32 0JG", "NE30 1DP"]}'`__
 
-that returns a non-determinist result:
+returning yet another unique encrypted string you will put in place of the plain text query:
 
 ```
 BDfT0gaCqtru/YRL/qEDEPTopcKe04wXtkRlDw0PNa8hazsDgKXv1G0pBVaHK5um6eTzAggrLKlXVLSUqI6rVzd9oaDST4Zo1NtLf2iMwWI0yx7sWwuhFY0Ot+OltgHLf8SclyRuHZHiOq+Ubx1pBtFGImYH4yMon1PgR+V9iWqN2gzv
