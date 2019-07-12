@@ -30,7 +30,14 @@ __`❍ truffle(develop)> test`__
 
 ## :camera: Passing Tests:
 
-[The passing tests!](bitcoin-balance-tests.jpg)
+```javascript
+  Contract: Bitcoin Address Example Tests
+    ✓ Should retrieve a balance from the bitcoin blockchain (190609ms)
+    ✓ Should store the bitcoin balance in the smart-contract
+
+  2 passing (3m)
+
+```
 
 &nbsp;
 

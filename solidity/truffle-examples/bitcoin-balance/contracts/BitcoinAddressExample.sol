@@ -1,8 +1,8 @@
 pragma solidity >= 0.5.0 < 0.6.0;
 
-import "./oraclizeAPI.sol";
+import "./provableAPI.sol";
 
-contract BitcoinBalanceExample is usingOraclize {
+contract BitcoinBalanceExample is usingProvable {
 
     uint256 public balance;
 
@@ -20,7 +20,7 @@ contract BitcoinBalanceExample is usingOraclize {
     )
         public
     {
-        require(msg.sender == oraclize_cbAddress());
+        require(msg.sender == provable_cbAddress());
         balance = parseInt(_result, 8);
         emit LogBitcoinAddressBalance(balance);
     }
@@ -31,6 +31,6 @@ contract BitcoinBalanceExample is usingOraclize {
         public
         payable
     {
-        oraclize_query("computation", ["QmYe37uvAUvZZ8ksV726BZt6dJFWP764sTPisNQtuDZVom", _bitcoinAddress]);
+        provable_query("computation", ["QmYe37uvAUvZZ8ksV726BZt6dJFWP764sTPisNQtuDZVom", _bitcoinAddress]);
     }
 }
