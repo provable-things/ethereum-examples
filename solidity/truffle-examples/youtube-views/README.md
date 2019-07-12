@@ -30,7 +30,17 @@ __`❍ truffle(develop)> test`__
 
 ## :camera: Passing Tests:
 
-[The passing tests!](youtube-views-tests.jpg)
+```javascript
+
+  Contract: Youtube Views Tests
+    ✓ Should have logged a new Provable query
+    ✓ Callback should have logged a new YouTube views event (10390ms)
+    ✓ Should store YouTube views correctly in contract
+    ✓ Should revert on second query attempt due to lack of funds (58ms)
+
+  4 passing (11s)
+
+```
 
 &nbsp;
 
