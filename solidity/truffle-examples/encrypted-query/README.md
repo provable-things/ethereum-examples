@@ -9,7 +9,7 @@ This repo is to demonstrate how you would set up an Provable smart-contract deve
 **1)** Decide the Provable query you want to encrypt, the one in this example is:
 
 ```
-oraclize_query(
+provable_query(
   "URL",
   "json(https://api.postcodes.io/postcodes).status",
   '{"postcodes" : ["OX49 5NU", "M32 0JG", "NE30 1DP"]}'
@@ -53,7 +53,7 @@ BDfT0gaCqtru/YRL/qEDEPTopcKe04wXtkRlDw0PNa8hazsDgKXv1G0pBVaHK5um6eTzAggrLKlXVLSU
 **6)** Use the non-deterministic outputs to send your Provable query:
 
 ```
-oraclize_query(
+provable_query(
   "URL",
   "BMqMhIFTTzsDbUSfPT233dVWB6wp0ksci7R/c6Jezcy3nEsnX7EQTaqRbej3shF7NlOwGRJAs1IBtYS32f6HrexffY+z1XMCHp+W6vFaIpDSVP0sVxiokuO0fr+ePxHOkvUh9x49BSmageBbHM1RB6QY/xhhvwJtssZOspEHvic=",
   "BDfT0gaCqtru/YRL/qEDEPTopcKe04wXtkRlDw0PNa8hazsDgKXv1G0pBVaHK5um6eTzAggrLKlXVLSUqI6rVzd9oaDST4Zo1NtLf2iMwWI0yx7sWwuhFY0Ot+OltgHLf8SclyRuHZHiOq+Ubx1pBtFGImYH4yMon1PgR+V9iWqN2gzv"
