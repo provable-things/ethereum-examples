@@ -1,5 +1,5 @@
 FROM mhart/alpine-node:8
-MAINTAINER Oraclize "info@oraclize.it"
+MAINTAINER Provable "info@provable.xyz"
 
 COPY index.js package.json /tmp/
 WORKDIR /tmp/

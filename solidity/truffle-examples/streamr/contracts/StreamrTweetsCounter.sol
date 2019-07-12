@@ -1,13 +1,13 @@
 pragma solidity >= 0.5.0 < 0.6.0;
 
-import "./oraclizeAPI.sol";
+import "./provableAPI.sol";
 
-contract StreamrTweetsCounter is usingOraclize {
+contract StreamrTweetsCounter is usingProvable {
 
     uint public numberOfTweets;
 
     event LogResult(string result);
-    event LogNewOraclizeQuery(string description);
+    event LogNewProvableQuery(string description);
 
     constructor()
         public
@@ -21,7 +21,7 @@ contract StreamrTweetsCounter is usingOraclize {
     )
         public
     {
-        require(msg.sender == oraclize_cbAddress());
+        require(msg.sender == provable_cbAddress());
         numberOfTweets = parseInt(_result);
         emit LogResult(_result);
     }
@@ -30,11 +30,11 @@ contract StreamrTweetsCounter is usingOraclize {
         public
         payable
     {
-        if (oraclize_getPrice("computation") > address(this).balance) {
-            emit LogNewOraclizeQuery("Oraclize query was NOT sent, please add some ETH to cover for the query fee");
+        if (provable_getPrice("computation") > address(this).balance) {
+            emit LogNewProvableQuery("Provable query was NOT sent, please add some ETH to cover for the query fee");
         } else {
-            emit LogNewOraclizeQuery("Oraclize query was sent, standing by for the answer...");
-            oraclize_query(
+            emit LogNewProvableQuery("Provable query was sent, standing by for the answer...");
+            provable_query(
                 "computation",
                 [
                     "QmWFV2UrcUFMFk5R4iTZdusTRsvqohFwHjyXNH1Yu9v3Nm", // The ipfs multihash of archive.

@@ -30,7 +30,17 @@ __`❍ truffle(develop)> test`__
 
 ## :camera: Passing Tests:
 
-[The passing tests!](streamr-tests.jpg)
+```javascript
+
+  Contract: Streamr Tweets Counter Example Tests
+    ✓ Should have logged a new Provable query
+    ✓ Should retrieve number of tweets over the last minute (135221ms)
+    ✓ Should have saved the number of tweets in the smart-contract
+    ✓ Should log a failed second query due to lack of funds (91ms)
+
+  4 passing (2m)
+
+```
 
 &nbsp;
 

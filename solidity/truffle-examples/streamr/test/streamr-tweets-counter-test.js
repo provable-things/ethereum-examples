@@ -17,13 +17,13 @@ contract('Streamr Tweets Counter Example Tests', accounts => {
     )
   ))
 
-  it('Should have logged a new Oraclize query', async () => {
-    const event = await waitForEvent(events.LogNewOraclizeQuery)
+  it('Should have logged a new Provable query', async () => {
+    const event = await waitForEvent(events.LogNewProvableQuery)
     const description = event.returnValues.description
     assert.equal(
     description,
-      'Oraclize query was sent, standing by for the answer...',
-      'Oraclize query incorrectly logged!'
+      'Provable query was sent, standing by for the answer...',
+      'Provable query incorrectly logged!'
     )
   })
 
@@ -45,7 +45,7 @@ contract('Streamr Tweets Counter Example Tests', accounts => {
     assert.equal(
       parseInt(tweetCount),
       parseInt(numTweets),
-      'Number of tweets should have been saved after Oraclize callback'
+      'Number of tweets should have been saved after Provable callback'
     )
   })
 
@@ -56,11 +56,11 @@ contract('Streamr Tweets Counter Example Tests', accounts => {
         from: address,
         gas: gasAmt
       })
-    const description = events.LogNewOraclizeQuery.returnValues.description
+    const description = events.LogNewProvableQuery.returnValues.description
     assert.equal(
       description,
-      'Oraclize query was NOT sent, please add some ETH to cover for the query fee',
-      'Oraclize query incorrectly logged!'
+      'Provable query was NOT sent, please add some ETH to cover for the query fee',
+      'Provable query incorrectly logged!'
     )
   })
 })
