@@ -88,7 +88,15 @@ __`❍ truffle(develop)> test`__
 
 ## :camera: Passing Tests:
 
-[The passing tests!](encrypted-query.png)
+```
+ Contract: Encrypted Query Tests
+   ✓ Should log a new Provable query
+   ✓ Callback should log a new request status (40576ms)
+   ✓ Should set request status correctly in contract
+   ✓ Should log a failed query due to lack of funds (64ms)
+
+ 4 passing (41s)
+```
 
 &nbsp;
 
