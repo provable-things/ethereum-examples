@@ -1,8 +1,8 @@
 pragma solidity >= 0.5.0 < 0.6.0;
 
-import "./oraclizeAPI.sol";
+import "./provableAPI.sol";
 
-contract CallerPaysForQuery is usingOraclize {
+contract CallerPaysForQuery is usingProvable {
 
     string datasource = "URL";
     uint256 public queryPrice;
@@ -11,15 +11,15 @@ contract CallerPaysForQuery is usingOraclize {
     event LogNewEthPrice(string _price);
     /**
      * @notice  Setting a custom gas price that's higher than the 20gwei default
-     *          ensures `oraclize_getQueryPrice` returns the actual query price,
+     *          ensures `provable_getQueryPrice` returns the actual query price,
      *          rather than the _first_ query price would be free and ∴ zero
      *          when using default settings.
      */
     constructor()
         public
     {
-        oraclize_setCustomGasPrice(21 * 10 ** 9);
-        queryPrice = oraclize_getPrice(datasource);
+        provable_setCustomGasPrice(21 * 10 ** 9);
+        queryPrice = provable_getPrice(datasource);
     }
 
     function __callback(
@@ -29,7 +29,7 @@ contract CallerPaysForQuery is usingOraclize {
     )
         public
     {
-        require(msg.sender == oraclize_cbAddress());
+        require(msg.sender == provable_cbAddress());
         ethPriceInUSD = _result;
         emit LogNewEthPrice(ethPriceInUSD);
     }
@@ -42,7 +42,7 @@ contract CallerPaysForQuery is usingOraclize {
             queryPrice > 0 &&
             msg.value >= queryPrice
         );
-        oraclize_query(
+        provable_query(
             datasource,
             "json(https://api.kraken.com/0/public/Ticker?pair=ETHUSD).result.XETHZUSD.c.0"
         );
