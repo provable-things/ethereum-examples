@@ -50,7 +50,7 @@ returning yet another unique encrypted string you will put in place of the plain
 BDfT0gaCqtru/YRL/qEDEPTopcKe04wXtkRlDw0PNa8hazsDgKXv1G0pBVaHK5um6eTzAggrLKlXVLSUqI6rVzd9oaDST4Zo1NtLf2iMwWI0yx7sWwuhFY0Ot+OltgHLf8SclyRuHZHiOq+Ubx1pBtFGImYH4yMon1PgR+V9iWqN2gzv
 ```
 
-**6)** Use the non-deterministic outputs to send your Provable query:
+**6)** Use the previous two non-deterministic outputs and plug them into the query function:
 
 ```
 oraclize_query(
