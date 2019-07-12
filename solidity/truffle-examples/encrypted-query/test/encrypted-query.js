@@ -51,7 +51,7 @@ contract('Encrypted Query Tests', accounts => {
     assert.strictEqual(
       requestStatus,
       queriedStatus,
-      'Contract\'s ETHXBT price not set correctly!'
+      'Contract\'s status not set correctly!'
     )
   })
 
