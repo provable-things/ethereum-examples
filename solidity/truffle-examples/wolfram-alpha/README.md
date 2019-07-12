@@ -30,7 +30,17 @@ __`❍ truffle(develop)> test`__
 
 ## :camera: Passing Tests:
 
-[The passing tests!](wolfram-alpha.jpg)
+```javascript
+
+  Contract: WolframAlpha Example Tests
+    ✓ Should have logged a new Provable query
+    ✓ Callback should have logged a new temperature measure event (10317ms)
+    ✓ Should have saved the new temperature
+    ✓ Should revert on second query attempt due to lack of funds (54ms)
+
+  4 passing (11ms)
+
+```
 
 &nbsp;
 

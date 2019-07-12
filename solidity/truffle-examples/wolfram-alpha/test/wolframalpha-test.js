@@ -21,16 +21,16 @@ contract('WolframAlpha Example Tests', accounts => {
     )
   ))
 
-  it('Should have logged a new Oraclize query', async () => {
+  it('Should have logged a new Provable query', async () => {
     const {
       returnValues: {
         description
       }
-    } = await waitForEvent(events.LogNewOraclizeQuery)
+    } = await waitForEvent(events.LogNewProvableQuery)
     assert.strictEqual(
     description,
-      'Oraclize query was sent, standing by for the answer...',
-      'Oraclize query incorrectly logged!')
+      'Provable query was sent, standing by for the answer...',
+      'Provable query incorrectly logged!')
   })
 
   it('Callback should have logged a new temperature measure event', async () => {
@@ -43,7 +43,7 @@ contract('WolframAlpha Example Tests', accounts => {
     assert.isAbove(
       parseInt(temperature),
       0,
-      'A temperature should have been retrieved from Oraclize call!'
+      'A temperature should have been retrieved from Provable call!'
     )
   })
 
