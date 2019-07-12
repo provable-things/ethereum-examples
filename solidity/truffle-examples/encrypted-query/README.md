@@ -34,7 +34,7 @@ Provable public key:
 
 __`❍  python encrypted_queries_tools.py -e -p 044992e9473b7d90ca54d2886c7addd14a61109af202f1c95e218b0c99eb060c7134c4ae46345d0383ac996185762f04997d6fd6c393c86e4325c469741e64eca9 "json(https://api.postcodes.io/postcodes).status"`__
 
-that returns a non-determinist result:
+it will generate a unique encrypted string (each re-run will generate a new unique string, as each encrypted string is meant to be used only by a single contract at a time):
 
 ```
 BMqMhIFTTzsDbUSfPT233dVWB6wp0ksci7R/c6Jezcy3nEsnX7EQTaqRbej3shF7NlOwGRJAs1IBtYS32f6HrexffY+z1XMCHp+W6vFaIpDSVP0sVxiokuO0fr+ePxHOkvUh9x49BSmageBbHM1RB6QY/xhhvwJtssZOspEHvic=
