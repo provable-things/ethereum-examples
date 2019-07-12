@@ -52,7 +52,14 @@ __`❍ npx truffle test --network rinkeby`__
 
 ## :camera: Passing Tests:
 
-[The passing tests!](random-datasource-tests.jpg)
+```javascript
+  Contract: Random Example Tests
+    ✓ Should log a new Provable query (2421ms)
+    ✓ Callback should have logged a new uint random number result event (54739)
+    ✓ Should revert on second query attempt due to lack of funds (15290ms)
+
+  3 passing (1m)
+```
 
 &nbsp;
 

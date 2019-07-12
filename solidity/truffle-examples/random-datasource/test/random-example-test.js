@@ -25,16 +25,16 @@ contract('Random Example Tests', async accounts => {
     )
   ))
 
-  it('Should have logged a new Oraclize query', async () => {
+  it('Should have logged a new Provable query', async () => {
     const {
       returnValues: {
         description
       }
-    } = await waitForEvent(events.LogNewOraclizeQuery)
+    } = await waitForEvent(events.LogNewProvableQuery)
     assert.strictEqual(
       description,
-      'Oraclize query was sent, standing by for the answer...',
-      'Oraclize query incorrectly logged!'
+      'Provable query was sent, standing by for the answer...',
+      'Provable query incorrectly logged!'
     )
   })
 
@@ -47,7 +47,7 @@ contract('Random Example Tests', async accounts => {
     assert.isAbove(
       parseInt(randomNumber),
       0,
-      'A random number should have been retrieved from Oraclize call!'
+      'A random number should have been retrieved from Provable call!'
     )
   }).timeout(600000)
 
