@@ -1,5 +1,5 @@
 FROM frolvlad/alpine-python3
-MAINTAINER Oraclize "info@oraclize.it"
+MAINTAINER Provable "info@provable.xyz"
 
 COPY url-requests.py /
 

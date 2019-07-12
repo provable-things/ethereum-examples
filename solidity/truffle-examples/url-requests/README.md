@@ -30,7 +30,23 @@ __`❍ truffle(develop)> test`__
 
 ## :camera: Passing Tests:
 
-![The passing tests!](url-requests-tests.jpg)
+```javascript
+
+  Contract: Provable Example using Truffle
+    URL Requests Tests
+      ✓ Should log a new query upon a request for custom headers (246ms)
+      ✓ Should log a new query upon a basic auth request (189ms)
+      ✓ Should log a new query upon a POST request (271ms)
+      ✓ Should log a new query upon a PUT request (150ms)
+      ✓ Should log a new query upon a for request cookies (216ms)
+      ✓ Should log a failed second request for custom headers due to lack of funds (97ms)
+      ✓ Should log a failed second basic auth request due to lack of funds (75ms)
+      ✓ Should log a failed second POST request due to lack of funds (75ms)
+      ✓ Should log a failed second PUT request due to lack of funds (73ms)
+      ✓ Should log a failed second request for cookies due to lack of funds (51ms)
+
+  10 passing
+```
 
 &nbsp;
 

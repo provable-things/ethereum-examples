@@ -3,14 +3,14 @@ const {waitForEvent} = require('./utils')
 const urlRequests = artifacts.require('./UrlRequests.sol')
 const web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:9545'))
 
-contract('Oraclize Example using Truffle', async ([ ACCOUNT_ZERO, ...accounts ]) => {
+contract('Provable Example using Truffle', async ([ ACCOUNT_ZERO, ...accounts ]) => {
 
   describe("URL Requests Tests", async () => {
 
     const GAS_AMOUNT = 3e6
     const URL_REQUEST_CONTRACTS = new Array(5).fill()
-    const QUERY_SENT_STRING = 'Oraclize query was sent, standing by for the answer...'
-    const QUERY_NOT_SENT_STRING = 'Oraclize query was NOT sent, please add some ETH to cover for the query fee'
+    const QUERY_SENT_STRING = 'Provable query was sent, standing by for the answer...'
+    const QUERY_NOT_SENT_STRING = 'Provable query was NOT sent, please add some ETH to cover for the query fee'
 
     it('Should log a new query upon a request for custom headers', async () => {
       const { contract } = await urlRequests.new()
@@ -25,7 +25,7 @@ contract('Oraclize Example using Truffle', async ([ ACCOUNT_ZERO, ...accounts ])
           from: ACCOUNT_ZERO,
           gas: GAS_AMOUNT
         })
-      const description = txEvents.LogNewOraclizeQuery.returnValues.description
+      const description = txEvents.LogNewProvableQuery.returnValues.description
       assert.strictEqual(
         description,
         QUERY_SENT_STRING,
@@ -45,7 +45,7 @@ contract('Oraclize Example using Truffle', async ([ ACCOUNT_ZERO, ...accounts ])
           from: ACCOUNT_ZERO,
           gas: GAS_AMOUNT
         })
-      const description = txEvents.LogNewOraclizeQuery.returnValues.description
+      const description = txEvents.LogNewProvableQuery.returnValues.description
       assert.strictEqual(
         description,
         QUERY_SENT_STRING,
@@ -65,7 +65,7 @@ contract('Oraclize Example using Truffle', async ([ ACCOUNT_ZERO, ...accounts ])
           from: ACCOUNT_ZERO,
           gas: GAS_AMOUNT
         })
-      const description = txEvents.LogNewOraclizeQuery.returnValues.description
+      const description = txEvents.LogNewProvableQuery.returnValues.description
       assert.strictEqual(
         description,
         QUERY_SENT_STRING,
@@ -85,7 +85,7 @@ contract('Oraclize Example using Truffle', async ([ ACCOUNT_ZERO, ...accounts ])
           from: ACCOUNT_ZERO,
           gas: GAS_AMOUNT
         })
-      const description = txEvents.LogNewOraclizeQuery.returnValues.description
+      const description = txEvents.LogNewProvableQuery.returnValues.description
       assert.strictEqual(
       description,
         QUERY_SENT_STRING,
@@ -105,7 +105,7 @@ contract('Oraclize Example using Truffle', async ([ ACCOUNT_ZERO, ...accounts ])
           from: ACCOUNT_ZERO,
           gas: GAS_AMOUNT
         })
-      const description = txEvents.LogNewOraclizeQuery.returnValues.description
+      const description = txEvents.LogNewProvableQuery.returnValues.description
       assert.strictEqual(
         description,
         QUERY_SENT_STRING,
@@ -120,7 +120,7 @@ contract('Oraclize Example using Truffle', async ([ ACCOUNT_ZERO, ...accounts ])
           from: ACCOUNT_ZERO,
           gas: GAS_AMOUNT
         })
-      const description = events.LogNewOraclizeQuery.returnValues.description
+      const description = events.LogNewProvableQuery.returnValues.description
       assert.strictEqual(
         description,
         QUERY_NOT_SENT_STRING
@@ -135,7 +135,7 @@ contract('Oraclize Example using Truffle', async ([ ACCOUNT_ZERO, ...accounts ])
           from: ACCOUNT_ZERO,
           gas: GAS_AMOUNT
         })
-      const description = events.LogNewOraclizeQuery.returnValues.description
+      const description = events.LogNewProvableQuery.returnValues.description
       assert.strictEqual(
         description,
         QUERY_NOT_SENT_STRING
@@ -150,7 +150,7 @@ contract('Oraclize Example using Truffle', async ([ ACCOUNT_ZERO, ...accounts ])
           from: ACCOUNT_ZERO,
           gas: GAS_AMOUNT
         })
-      const description = events.LogNewOraclizeQuery.returnValues.description
+      const description = events.LogNewProvableQuery.returnValues.description
       assert.strictEqual(
         description,
         QUERY_NOT_SENT_STRING
@@ -165,7 +165,7 @@ contract('Oraclize Example using Truffle', async ([ ACCOUNT_ZERO, ...accounts ])
           from: ACCOUNT_ZERO,
           gas: GAS_AMOUNT
         })
-      const description = events.LogNewOraclizeQuery.returnValues.description
+      const description = events.LogNewProvableQuery.returnValues.description
       assert.strictEqual(
         description,
         QUERY_NOT_SENT_STRING
@@ -180,7 +180,7 @@ contract('Oraclize Example using Truffle', async ([ ACCOUNT_ZERO, ...accounts ])
           from: ACCOUNT_ZERO,
           gas: GAS_AMOUNT
         })
-      const description = events.LogNewOraclizeQuery.returnValues.description
+      const description = events.LogNewProvableQuery.returnValues.description
       assert.strictEqual(
         description,
         QUERY_NOT_SENT_STRING
