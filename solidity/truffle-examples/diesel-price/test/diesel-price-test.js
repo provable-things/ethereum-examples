@@ -21,16 +21,16 @@ contract('Diesel Price Tests', accounts => {
     )
   ))
 
-  it('Should have logged a new Oraclize query', async () => {
+  it('Should have logged a new Provable query', async () => {
     const {
       returnValues: {
         description
       }
-    } = await waitForEvent(events.LogNewOraclizeQuery)
+    } = await waitForEvent(events.LogNewProvableQuery)
     assert.strictEqual(
       description,
-      'Oraclize query was sent, standing by for the answer...',
-      'Oraclize query incorrectly logged!'
+      'Provable query was sent, standing by for the answer...',
+      'Provable query incorrectly logged!'
     )
   })
 
@@ -44,7 +44,7 @@ contract('Diesel Price Tests', accounts => {
     assert.isAbove(
       parseInt(price),
       0,
-      'A price should have been retrieved from Oraclize call!'
+      'A price should have been retrieved from Provable call!'
     )
   })
 

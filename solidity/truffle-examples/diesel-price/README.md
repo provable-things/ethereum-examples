@@ -30,7 +30,15 @@ __`❍ truffle(develop)> test`__
 
 ## :camera: Passing Tests:
 
-[The passing tests!](diesel-price-test.jpg)
+```javascript
+  Contract: Diesel Price Tests
+    ✓ Should have logged a new Provable query
+    ✓ Callback should have logged a new diesel price (4994ms)
+    ✓ Should set diesel price correctly in contract
+    ✓ Should revert on second query attempt due to lack of funds (44ms)
+
+  4 passing (6s)
+```
 
 &nbsp;
 

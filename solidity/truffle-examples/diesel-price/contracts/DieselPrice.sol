@@ -1,13 +1,13 @@
 pragma solidity >= 0.5.0 < 0.6.0;
 
-import "./oraclizeAPI.sol";
+import "./provableAPI.sol";
 
-contract DieselPrice is usingOraclize {
+contract DieselPrice is usingProvable {
 
     uint public dieselPriceUSD;
 
     event LogNewDieselPrice(string price);
-    event LogNewOraclizeQuery(string description);
+    event LogNewProvableQuery(string description);
 
     constructor()
         public
@@ -21,7 +21,7 @@ contract DieselPrice is usingOraclize {
     )
         public
     {
-        require(msg.sender == oraclize_cbAddress());
+        require(msg.sender == provable_cbAddress());
         emit LogNewDieselPrice(result);
         dieselPriceUSD = parseInt(result, 2); // Let's save it as cents...
         // Now do something with the USD Diesel price...
@@ -31,7 +31,7 @@ contract DieselPrice is usingOraclize {
         public
         payable
     {
-        emit LogNewOraclizeQuery("Oraclize query was sent, standing by for the answer...");
-        oraclize_query("URL", "xml(https://www.fueleconomy.gov/ws/rest/fuelprices).fuelPrices.diesel");
+        emit LogNewProvableQuery("Provable query was sent, standing by for the answer...");
+        provable_query("URL", "xml(https://www.fueleconomy.gov/ws/rest/fuelprices).fuelPrices.diesel");
     }
 }
