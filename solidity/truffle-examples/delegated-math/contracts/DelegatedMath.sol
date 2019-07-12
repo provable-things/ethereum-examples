@@ -1,15 +1,15 @@
 pragma solidity  >= 0.5.0 < 0.6.0;
 
-import "./oraclizeAPI.sol";
+import "./provableAPI.sol";
 
-contract DelegatedMath is usingOraclize {
+contract DelegatedMath is usingProvable {
 
     event LogOperationResult(uint result);
 
     constructor()
         public
     {
-        oraclize_setProof(proofType_TLSNotary | proofStorage_IPFS);
+        provable_setProof(proofType_TLSNotary | proofStorage_IPFS);
         delegateOperation("32", "125");
     }
 
@@ -20,7 +20,7 @@ contract DelegatedMath is usingOraclize {
     )
         public
     {
-        require(msg.sender == oraclize_cbAddress());
+        require(msg.sender == provable_cbAddress());
         emit LogOperationResult(parseInt(_result));
     }
 
@@ -31,6 +31,6 @@ contract DelegatedMath is usingOraclize {
         public
         payable
     {
-        oraclize_query("computation", ["Qmc8jmuT47cPWadF8ZhErGXj7J4VEp5H29knukCGirsN19", _firstOperand, _secondOperand]);
+        provable_query("computation", ["Qmc8jmuT47cPWadF8ZhErGXj7J4VEp5H29knukCGirsN19", _firstOperand, _secondOperand]);
     }
 }

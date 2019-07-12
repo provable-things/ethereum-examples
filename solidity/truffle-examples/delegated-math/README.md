@@ -30,7 +30,14 @@ __`❍ truffle(develop)> test`__
 
 ## :camera: Passing Tests:
 
-[The passing tests!](delegate-math-tests.jpg)
+```javascript
+  Contract: Delegated Math Example Tests
+    ✓ Should retrieve a result from an offchain computation (80350ms)
+    ✓ Should have calculated the offchain computation correctly
+
+
+  2 passing (1m)
+```
 
 &nbsp;
 
