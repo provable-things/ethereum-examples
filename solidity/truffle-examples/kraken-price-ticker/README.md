@@ -30,7 +30,17 @@ __`❍ truffle(develop)> test`__
 
 ## :camera: Passing Tests:
 
-[The passing tests!](kraken-price-tests.jpg)
+```javascript
+
+  Contract: Kraken Price Ticker Tests
+    ✓ Should log a new Provable query
+    ✓ Callback should log a new ETHXBT price (79193ms)
+    ✓ Should set ETHXBT price correctly in contract
+    ✓ Should log a failed query due to lack of funds (79ms)
+
+  4 passing (1m)
+
+```
 
 &nbsp;
 

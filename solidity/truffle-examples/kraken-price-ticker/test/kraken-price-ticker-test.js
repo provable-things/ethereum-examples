@@ -17,16 +17,16 @@ contract('Kraken Price Ticker Tests', accounts => {
     )
   ))
 
-  it('Should log a new Oraclize query', async () => {
+  it('Should log a new Provable query', async () => {
     const {
       returnValues: {
         description
       }
-    } = await waitForEvent(events.LogNewOraclizeQuery)
+    } = await waitForEvent(events.LogNewProvableQuery)
     assert.strictEqual(
       description,
-      'Oraclize query was sent, standing by for the answer...',
-      'Oraclize query incorrectly logged!'
+      'Provable query was sent, standing by for the answer...',
+      'Provable query incorrectly logged!'
     )
   })
 
@@ -40,7 +40,7 @@ contract('Kraken Price Ticker Tests', accounts => {
     assert.isAbove(
       parseFloat(price),
       0,
-      'A price should have been retrieved from Oraclize call!'
+      'A price should have been retrieved from Provable call!'
     )
   })
 
@@ -62,11 +62,11 @@ contract('Kraken Price Ticker Tests', accounts => {
         from: address,
         gas: gasAmt
       })
-    const description = events.LogNewOraclizeQuery.returnValues.description
+    const description = events.LogNewProvableQuery.returnValues.description
     assert.strictEqual(
       description,
-      'Oraclize query was NOT sent, please add some ETH to cover for the query fee!',
-      'Oraclize query incorrectly logged!'
+      'Provable query was NOT sent, please add some ETH to cover for the query fee!',
+      'Provable query incorrectly logged!'
     )
   })
 })
