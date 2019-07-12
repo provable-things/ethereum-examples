@@ -6,7 +6,7 @@ This repo is to demonstrate how you would set up a Provable smart-contract devel
 
 ## :squirrel: _Query Encryption_
 
-**1)** Decide the Provable query you want to encrypt, the one in this example is:
+**1)** Decide on the Provable query you want to encrypt, the one in this example is:
 
 ```
 oraclize_query(
