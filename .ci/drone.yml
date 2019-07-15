@@ -86,11 +86,12 @@ steps:
   - name: test-random
     image: provable/eth-ci
     commands:
-      - /var/workspace/sv-wrapper.sh
       - cd solidity/truffle-examples/random-datasource
       - npm i --no-optional -g dotenv
       - npm link web3 truffle-hdwallet-provider dotenv
-      - truffle test
+      - echo "mnemonic = tumble uncover cradle bridge farm sauce" >> .env
+      - echo "infuraKey = dff2672a2a7e43f193a374a16c485c33" >> .env
+      - truffle test --network rinkeby
 
 ---
 kind: pipeline
