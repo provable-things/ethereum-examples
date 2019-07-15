@@ -66,19 +66,19 @@ steps:
       - truffle test
 
 ---
-kind: pipeline
-name: provable-ap-kraken
-
-steps:
-  - name: test-url-ap-kraken
-    image: provable/eth-ci
-    commands:
-      - /var/workspace/sv-wrapper.sh
-      - cd solidity/truffle-examples/kraken-price-ticker
-      - npm link web3
-      - truffle test
-
----
+#kind: pipeline
+#name: provable-ap-kraken
+#
+#steps:
+#  - name: test-url-ap-kraken
+#    image: provable/eth-ci
+#    commands:
+#      - /var/workspace/sv-wrapper.sh
+#      - cd solidity/truffle-examples/kraken-price-ticker
+#      - npm link web3
+#      - truffle test
+#
+#---
 kind: pipeline
 name: provable-random
 
@@ -110,7 +110,7 @@ steps:
 #name: provable-requests
 #
 #steps:
-#  - name: test-comp-requests
+#  - name: test-comp-ap-requests
 #    image: provable/eth-ci
 #    commands:
 #      - /var/workspace/sv-wrapper.sh
