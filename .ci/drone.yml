@@ -89,7 +89,7 @@ steps:
       - cd solidity/truffle-examples/random-datasource
       - npm i --no-optional -g dotenv
       - npm link web3 truffle-hdwallet-provider dotenv
-      - echo "mnemonic = tumble uncover cradle bridge farm sauce" >> .env
+      - echo "mnemonic = coast mind object you word swarm dinosaur cereal wash corn tape quarter" >> .env
       - echo "infuraKey = dff2672a2a7e43f193a374a16c485c33" >> .env
       - truffle test --network rinkeby
 
