@@ -53,19 +53,6 @@ steps:
       - truffle test
 
 ---
-kind: pipeline
-name: provable-encrypted
-
-steps:
-  - name: test-url-encrypted
-    image: provable/eth-ci
-    commands:
-      - /var/workspace/sv-wrapper.sh
-      - cd solidity/truffle-examples/encrypted-query
-      - npm link web3
-      - truffle test
-
----
 #kind: pipeline
 #name: provable-ap-kraken
 #
