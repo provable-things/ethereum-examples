@@ -1,14 +1,14 @@
-# :wrench: :construction: Testing Oraclize's Diesel Prices Example.
+# :wrench: :construction: Testing Provable's Diesel Prices Example.
 
 &nbsp;
 
-This repo is to demonstrate how you would set up an Oraclize smart-contract development environment using Truffle & the Ethereum-Bridge to do most of the heavy lifting for you. Head on over to the `./test` folder to examine the javascript files that thoroughly test the smart-contract, which latter you will find in `./contracts`.
+This repo is to demonstrate how you would set up a Provable smart-contract development environment using Truffle & the Ethereum-Bridge to do most of the heavy lifting for you. Head on over to the `./test` folder to examine the javascript files that thoroughly test the smart-contract, which latter you will find in `./contracts`.
 
 ## :page_with_curl:  _Instructions_
 
 **1)** Fire up your favourite console & clone this repo somewhere:
 
-__`❍ git clone https://github.com/oraclize/ethereum-examples.git`__
+__`❍ git clone https://github.com/provable-things/ethereum-examples.git`__
 
 **2)** Enter this directory & install dependencies:
 
@@ -30,12 +30,20 @@ __`❍ truffle(develop)> test`__
 
 ## :camera: Passing Tests:
 
-[The passing tests!](diesel-price-test.jpg)
+```javascript
+  Contract: Diesel Price Tests
+    ✓ Should have logged a new Provable query
+    ✓ Callback should have logged a new diesel price (4994ms)
+    ✓ Should set diesel price correctly in contract
+    ✓ Should revert on second query attempt due to lack of funds (44ms)
+
+  4 passing (6s)
+```
 
 &nbsp;
 
 ## :black_nib: Notes:
 
-__❍__ If you have any issues, head on over to our [Gitter](https://gitter.im/oraclize/ethereum-api?raw=true) channel to get timely support!
+__❍__ If you have any issues, head on over to our [Gitter](https://gitter.im/provable/ethereum-api?raw=true) channel to get timely support!
 
 __*Happy developing!*__

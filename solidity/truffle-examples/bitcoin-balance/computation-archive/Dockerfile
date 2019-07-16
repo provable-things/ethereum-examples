@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER Oraclize "info@oraclize.it"
+MAINTAINER Provable "info@provable.xyz"
 
 RUN apt-get update \
     && apt-get install -y wget gnupg2 python3-setuptools python3-pyqt5 python3-pip jq
@@ -10,4 +10,4 @@ RUN if [ $(/usr/bin/gpg2 --logger-fd 1 --status-fd 1 --always-trust --verify Ele
 RUN /usr/bin/pip3 install Electrum-3.0.5.tar.gz
 CMD /usr/local/bin/electrum daemon start \
    && /usr/local/bin/electrum getaddressbalance "$ARG0" | jq .confirmed \
-   && exit 0; 
+   && exit 0;

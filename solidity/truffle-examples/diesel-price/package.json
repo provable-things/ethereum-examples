@@ -1,7 +1,7 @@
 {
-  "name": "oraclize-examples-using-truffle__diesel-price",
+  "name": "provable-examples-using-truffle__diesel-price",
   "version": "0.1.0",
-  "description": "Testing set up for Oraclize's Diesel Price example contract",
+  "description": "Testing set up for Provable's Diesel Price example contract",
   "main": "README.md",
   "directories": {
     "test": "test"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/n/a.git"
   },
-  "author": "Oraclize - Greg Kapka",
+  "author": "Provable - Greg Kapka",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/n/a/issues"

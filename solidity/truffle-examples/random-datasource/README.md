@@ -1,8 +1,8 @@
-# :wrench: :construction: Testing Oraclize's Random Example.
+# :wrench: :construction: Testing Provable's Random Example.
 
 &nbsp;
 
-This repo is to demonstrate how you would set up an Oraclize smart-contract development environment using Truffle to do most of the heavy lifting for you. Head on over to the `./test` folder to examine the javascript files that thoroughly test the smart-contract, which latter you will find in `./contracts`.
+This repo is to demonstrate how you would set up a Provable smart-contract development environment using Truffle to do most of the heavy lifting for you. Head on over to the `./test` folder to examine the javascript files that thoroughly test the smart-contract, which latter you will find in `./contracts`.
 
 ## :page_with_curl:  _Instructions_
 
@@ -14,7 +14,7 @@ The random datasource is currently available on the Ethereum mainnet and on some
 
 **3)** Fire up your favourite console & clone this repo somewhere:
 
-__`❍ git clone https://github.com/oraclize/ethereum-examples.git`__
+__`❍ git clone https://github.com/provable-things/ethereum-examples.git`__
 
 **4)** Enter this directory & install dependencies:
 
@@ -52,7 +52,14 @@ __`❍ npx truffle test --network rinkeby`__
 
 ## :camera: Passing Tests:
 
-[The passing tests!](random-datasource-tests.jpg)
+```javascript
+  Contract: Random Example Tests
+    ✓ Should log a new Provable query (2421ms)
+    ✓ Callback should have logged a new uint random number result event (54739)
+    ✓ Should revert on second query attempt due to lack of funds (15290ms)
+
+  3 passing (1m)
+```
 
 &nbsp;
 
@@ -60,7 +67,7 @@ __`❍ npx truffle test --network rinkeby`__
 
 __❍__ Note that your own Infura key and the Metamask passphrase must be kept secure. The ones provided here are simply placeholders.
 
-__❍__ If you have any issues, head on over to our [Gitter](https://gitter.im/oraclize/ethereum-api?raw=true) channel to get timely support!
+__❍__ If you have any issues, head on over to our [Gitter](https://gitter.im/provable/ethereum-api?raw=true) channel to get timely support!
 
 __*Happy developing!*__
 

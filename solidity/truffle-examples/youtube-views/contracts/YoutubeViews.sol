@@ -1,13 +1,13 @@
 pragma solidity >= 0.5.0 < 0.6.0;
 
-import "./oraclizeAPI.sol";
+import "./provableAPI.sol";
 
-contract YoutubeViews is usingOraclize {
+contract YoutubeViews is usingProvable {
 
     string public viewsCount;
 
     event LogYoutubeViewCount(string views);
-    event LogNewOraclizeQuery(string description);
+    event LogNewProvableQuery(string description);
 
     constructor()
         public
@@ -21,7 +21,7 @@ contract YoutubeViews is usingOraclize {
     )
         public
     {
-        require(msg.sender == oraclize_cbAddress());
+        require(msg.sender == provable_cbAddress());
         viewsCount = _result;
         emit LogYoutubeViewCount(viewsCount);
         // Do something with viewsCount, like tipping the author if viewsCount > X?
@@ -31,7 +31,7 @@ contract YoutubeViews is usingOraclize {
         public
         payable
     {
-        emit LogNewOraclizeQuery("Oraclize query was sent, standing by for the answer...");
-        oraclize_query("URL", 'html(https://www.youtube.com/watch?v=9bZkp7q19f0).xpath(//*[contains(@class, "watch-view-count")]/text())');
+        emit LogNewProvableQuery("Provable query was sent, standing by for the answer...");
+        provable_query("URL", 'html(https://www.youtube.com/watch?v=9bZkp7q19f0).xpath(//*[contains(@class, "watch-view-count")]/text())');
     }
 }

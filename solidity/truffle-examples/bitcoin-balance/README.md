@@ -1,14 +1,14 @@
-# :wrench: :construction: Testing Oraclize's Bitcoin Balance Example.
+# :wrench: :construction: Testing Provable's Bitcoin Balance Example.
 
 &nbsp;
 
-This repo is to demonstrate how you would set up an Oraclize smart-contract development environment using Truffle & the Ethereum-Bridge to do most of the heavy lifting for you. Head on over to the `./test` folder to examine the javascript files that thoroughly test the smart-contract, which latter you will find in `./contracts`.
+This repo is to demonstrate how you would set up a Provable smart-contract development environment using Truffle & the Ethereum-Bridge to do most of the heavy lifting for you. Head on over to the `./test` folder to examine the javascript files that thoroughly test the smart-contract, which latter you will find in `./contracts`.
 
 ## :page_with_curl:  _Instructions_
 
 **1)** Fire up your favourite console & clone this repo somewhere:
 
-__`❍ git clone https://github.com/oraclize/ethereum-examples.git`__
+__`❍ git clone https://github.com/provable-things/ethereum-examples.git`__
 
 **2)** Enter this directory & install dependencies:
 
@@ -30,12 +30,19 @@ __`❍ truffle(develop)> test`__
 
 ## :camera: Passing Tests:
 
-[The passing tests!](bitcoin-balance-tests.jpg)
+```javascript
+  Contract: Bitcoin Address Example Tests
+    ✓ Should retrieve a balance from the bitcoin blockchain (190609ms)
+    ✓ Should store the bitcoin balance in the smart-contract
+
+  2 passing (3m)
+
+```
 
 &nbsp;
 
 ## :black_nib: Notes:
 
-__❍__ If you have any issues, head on over to our [Gitter](https://gitter.im/oraclize/ethereum-api?raw=true) channel to get timely support!
+__❍__ If you have any issues, head on over to our [Gitter](https://gitter.im/provable/ethereum-api?raw=true) channel to get timely support!
 
 __*Happy developing!*__

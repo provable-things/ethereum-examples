@@ -1,11 +1,133 @@
+#kind: pipeline
+#name: provable-bitcoin
+#
+#steps:
+#  - name: test-comp-bitcoin
+#    image: provable/eth-ci
+#    commands:
+#      - /var/workspace/sv-wrapper.sh
+#      - cd solidity/truffle-examples/bitcoin-balance
+#      - npm link web3
+#      - truffle test
+#
+#---
 kind: pipeline
-name: provable-encrypted
+name: provable-caller-pays
 
 steps:
-  - name: test-url-encrypted
+  - name: test-url-caller-pays
+    image: provable/eth-ci
+    commands:
+      - /var/workspace/sv-wrapper.sh &
+      - apk add --no-cache g++ make python > /dev/null
+      - cd solidity/truffle-examples/caller-pays-for-query
+      - npm link web3
+      - npm i --no-optional > /dev/null
+      - while ! grep -q "Listening @ 0x" /tmp/bridge.out; do sleep 1; done
+      - truffle test
+
+---
+kind: pipeline
+name: provable-math
+
+steps:
+  - name: test-comp-math
     image: provable/eth-ci
     commands:
       - /var/workspace/sv-wrapper.sh
-      - cd solidity/truffle-examples/encrypted-query
+      - cd solidity/truffle-examples/delegated-math
+      - npm link web3
+      - truffle test
+
+---
+kind: pipeline
+name: provable-diesel
+
+steps:
+  - name: test-url-diesel
+    image: provable/eth-ci
+    commands:
+      - /var/workspace/sv-wrapper.sh
+      - cd solidity/truffle-examples/diesel-price
+      - npm link web3
+      - truffle test
+
+---
+#kind: pipeline
+#name: provable-ap-kraken
+#
+#steps:
+#  - name: test-url-ap-kraken
+#    image: provable/eth-ci
+#    commands:
+#      - /var/workspace/sv-wrapper.sh
+#      - cd solidity/truffle-examples/kraken-price-ticker
+#      - npm link web3
+#      - truffle test
+#
+#---
+kind: pipeline
+name: provable-random
+
+steps:
+  - name: test-random
+    image: provable/eth-ci
+    commands:
+      - cd solidity/truffle-examples/random-datasource
+      - npm i --no-optional -g dotenv
+      - npm link web3 truffle-hdwallet-provider dotenv
+      - echo "mnemonic = coast mind object you word swarm dinosaur cereal wash corn tape quarter" >> .env
+      - echo "infuraKey = dff2672a2a7e43f193a374a16c485c33" >> .env
+      - truffle test --network rinkeby
+
+---
+kind: pipeline
+name: provable-streamr
+
+steps:
+  - name: test-comp-streamr
+    image: provable/eth-ci
+    commands:
+      - /var/workspace/sv-wrapper.sh
+      - cd solidity/truffle-examples/streamr
+      - npm link web3
+      - truffle test
+
+---
+#kind: pipeline
+#name: provable-requests
+#
+#steps:
+#  - name: test-comp-ap-requests
+#    image: provable/eth-ci
+#    commands:
+#      - /var/workspace/sv-wrapper.sh
+#      - cd solidity/truffle-examples/url-requests
+#      - npm link web3
+#      - truffle test
+#
+#---
+kind: pipeline
+name: provable-wolfram
+
+steps:
+  - name: test-wolfram
+    image: provable/eth-ci
+    commands:
+      - /var/workspace/sv-wrapper.sh
+      - cd solidity/truffle-examples/wolfram-alpha
+      - npm link web3
+      - truffle test
+
+---
+kind: pipeline
+name: provable-youtube
+
+steps:
+  - name: test-url-youtube
+    image: provable/eth-ci
+    commands:
+      - /var/workspace/sv-wrapper.sh
+      - cd solidity/truffle-examples/youtube-views
       - npm link web3
       - truffle test

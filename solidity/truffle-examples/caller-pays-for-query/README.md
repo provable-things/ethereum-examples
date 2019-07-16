@@ -8,7 +8,7 @@ This repo is set up to show how a Provable smart-contract development environmen
 
 **1)** Fire up your favourite console & clone this repo somewhere:
 
-__`❍ git clone https://github.com/oraclize/ethereum-examples.git`__
+__`❍ git clone https://github.com/provable-things/ethereum-examples.git`__
 
 **2)** Enter this directory & install dependencies:
 
@@ -55,6 +55,6 @@ __`❍ truffle(develop)> test`__
 
 ## :black_nib: Notes:
 
-__❍__ If you have any issues, head on over to our [Gitter](https://gitter.im/oraclize/ethereum-api?raw=true) channel to get timely support!
+__❍__ If you have any issues, head on over to our [Gitter](https://gitter.im/provable/ethereum-api?raw=true) channel to get timely support!
 
 __*Happy developing!*__

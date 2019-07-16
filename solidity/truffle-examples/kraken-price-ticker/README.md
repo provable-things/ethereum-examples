@@ -1,14 +1,14 @@
-# :wrench: :construction: Testing Oraclize's Kraken Price Ticker Example.
+# :wrench: :construction: Testing Provable's Kraken Price Ticker Example.
 
 &nbsp;
 
-This repo is to demonstrate how you would set up an Oraclize smart-contract development environment using Truffle & the Ethereum-Bridge to do most of the heavy lifting for you. Head on over to the `./test` folder to examine the javascript files that thoroughly test the smart-contract, which latter you will find in `./contracts`.
+This repo is to demonstrate how you would set up a Provable smart-contract development environment using Truffle & the Ethereum-Bridge to do most of the heavy lifting for you. Head on over to the `./test` folder to examine the javascript files that thoroughly test the smart-contract, which latter you will find in `./contracts`.
 
 ## :page_with_curl:  _Instructions_
 
 **1)** Fire up your favourite console & clone this repo somewhere:
 
-__`❍ git clone https://github.com/oraclize/ethereum-examples.git`__
+__`❍ git clone https://github.com/provable-things/ethereum-examples.git`__
 
 **2)** Enter this directory & install dependencies:
 
@@ -30,12 +30,22 @@ __`❍ truffle(develop)> test`__
 
 ## :camera: Passing Tests:
 
-[The passing tests!](kraken-price-tests.jpg)
+```javascript
+
+  Contract: Kraken Price Ticker Tests
+    ✓ Should log a new Provable query
+    ✓ Callback should log a new ETHXBT price (79193ms)
+    ✓ Should set ETHXBT price correctly in contract
+    ✓ Should log a failed query due to lack of funds (79ms)
+
+  4 passing (1m)
+
+```
 
 &nbsp;
 
 ## :black_nib: Notes:
 
-__❍__ If you have any issues, head on over to our [Gitter](https://gitter.im/oraclize/ethereum-api?raw=true) channel to get timely support!
+__❍__ If you have any issues, head on over to our [Gitter](https://gitter.im/provable/ethereum-api?raw=true) channel to get timely support!
 
 __*Happy developing!*__

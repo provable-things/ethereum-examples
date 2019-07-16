@@ -1,16 +1,16 @@
 pragma solidity >= 0.5.0 < 0.6.0;
 
-import "./oraclizeAPI.sol";
+import "./provableAPI.sol";
 
-contract UrlRequests is usingOraclize {
+contract UrlRequests is usingProvable {
 
-    event LogNewOraclizeQuery(string description);
+    event LogNewProvableQuery(string description);
     event LogResult(string result);
 
     constructor()
         public
     {
-        oraclize_setProof(proofType_Android | proofStorage_IPFS);
+        provable_setProof(proofType_Android | proofStorage_IPFS);
     }
 
     function __callback(
@@ -20,7 +20,7 @@ contract UrlRequests is usingOraclize {
     )
         public
     {
-        require(msg.sender == oraclize_cbAddress());
+        require(msg.sender == provable_cbAddress());
         emit LogResult(_result);
     }
 
@@ -33,11 +33,11 @@ contract UrlRequests is usingOraclize {
         public
         payable
     {
-        if (oraclize_getPrice("computation") > address(this).balance) {
-            emit LogNewOraclizeQuery("Oraclize query was NOT sent, please add some ETH to cover for the query fee");
+        if (provable_getPrice("computation") > address(this).balance) {
+            emit LogNewProvableQuery("Provable query was NOT sent, please add some ETH to cover for the query fee");
         } else {
-            emit LogNewOraclizeQuery("Oraclize query was sent, standing by for the answer...");
-            oraclize_query("computation",
+            emit LogNewProvableQuery("Provable query was sent, standing by for the answer...");
+            provable_query("computation",
                 [_query,
                 _method,
                 _url,

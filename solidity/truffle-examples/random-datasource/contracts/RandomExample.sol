@@ -10,20 +10,20 @@
  */
 pragma solidity >= 0.5.0 < 0.6.0;
 
-import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
+import "./provableAPI.sol";
 
-contract RandomExample is usingOraclize {
+contract RandomExample is usingProvable {
 
     uint256 constant MAX_INT_FROM_BYTE = 256;
     uint256 constant NUM_RANDOM_BYTES_REQUESTED = 7;
 
-    event LogNewOraclizeQuery(string description);
+    event LogNewProvableQuery(string description);
     event generatedRandomNumber(uint256 randomNumber);
 
     constructor()
         public
     {
-        oraclize_setProof(proofType_Ledger);
+        provable_setProof(proofType_Ledger);
         update();
     }
 
@@ -34,10 +34,10 @@ contract RandomExample is usingOraclize {
     )
         public
     {
-        require(msg.sender == oraclize_cbAddress());
+        require(msg.sender == provable_cbAddress());
 
         if (
-            oraclize_randomDS_proofVerify__returnCode(
+            provable_randomDS_proofVerify__returnCode(
                 _queryId,
                 _result,
                 _proof
@@ -78,11 +78,11 @@ contract RandomExample is usingOraclize {
     {
         uint256 QUERY_EXECUTION_DELAY = 0;
         uint256 GAS_FOR_CALLBACK = 200000;
-        oraclize_newRandomDSQuery(
+        provable_newRandomDSQuery(
             QUERY_EXECUTION_DELAY,
             NUM_RANDOM_BYTES_REQUESTED,
             GAS_FOR_CALLBACK
         );
-        emit LogNewOraclizeQuery("Oraclize query was sent, standing by for the answer...");
+        emit LogNewProvableQuery("Provable query was sent, standing by for the answer...");
     }
 }
