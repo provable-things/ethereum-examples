@@ -1,6 +1,6 @@
 pragma solidity >= 0.5.0 < 0.6.0;
 
-import "github.com/provable/ethereum-api/provableAPI.sol";
+import "github.com/provable-things/ethereum-api/provableAPI.sol";
 
 contract YoutubeViews is usingProvable {
 
