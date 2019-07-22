@@ -1,3 +1,87 @@
+kind: pipeline
+name: solc-diesel
+
+clone:
+  disable: true
+
+steps:
+  - name: clone
+    image: docker:git
+    commands:
+      - git clone https://github.com/provable-things/ethereum-examples.git .
+      - git checkout $DRONE_COMMIT -b $DRONE_BRANCH
+      - git clone https://github.com/provable-things/ethereum-api.git
+
+  - name: compile
+    image: ethereum/solc:stable-alpine
+    commands:
+      - cd solidity
+      - solc github.com/provable-things/ethereum-api/=/drone/src/ethereum-api/ DieselPrice.sol
+
+---
+kind: pipeline
+name: solc-kraken
+
+clone:
+  disable: true
+
+steps:
+  - name: clone
+    image: docker:git
+    commands:
+      - git clone https://github.com/provable-things/ethereum-examples.git .
+      - git checkout $DRONE_COMMIT -b $DRONE_BRANCH
+      - git clone https://github.com/provable-things/ethereum-api.git
+
+  - name: compile
+    image: ethereum/solc:stable-alpine
+    commands:
+      - cd solidity
+      - solc github.com/provable-things/ethereum-api/=/drone/src/ethereum-api/ KrakenPriceTicker.sol
+
+---
+kind: pipeline
+name: solc-wolfram
+
+clone:
+  disable: true
+
+steps:
+  - name: clone
+    image: docker:git
+    commands:
+      - git clone https://github.com/provable-things/ethereum-examples.git .
+      - git checkout $DRONE_COMMIT -b $DRONE_BRANCH
+      - git clone https://github.com/provable-things/ethereum-api.git
+
+  - name: compile
+    image: ethereum/solc:stable-alpine
+    commands:
+      - cd solidity
+      - solc github.com/provable-things/ethereum-api/=/drone/src/ethereum-api/ WolframAlpha.sol
+
+---
+kind: pipeline
+name: solc-youtube
+
+clone:
+  disable: true
+
+steps:
+  - name: clone
+    image: docker:git
+    commands:
+      - git clone https://github.com/provable-things/ethereum-examples.git .
+      - git checkout $DRONE_COMMIT -b $DRONE_BRANCH
+      - git clone https://github.com/provable-things/ethereum-api.git
+
+  - name: compile
+    image: ethereum/solc:stable-alpine
+    commands:
+      - cd solidity
+      - solc github.com/provable-things/ethereum-api/=/drone/src/ethereum-api/ YoutubeViews.sol
+
+---
 #kind: pipeline
 #name: provable-bitcoin
 #
