@@ -1,12 +1,12 @@
 pragma solidity >= 0.5.0 < 0.6.0;
 
-import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
+import "github.com/provable-things/ethereum-api/provableAPI.sol";
 
-contract WolframAlpha is usingOraclize {
+contract WolframAlpha is usingProvable {
 
     string public temperature;
 
-    event LogNewOraclizeQuery(string description);
+    event LogNewProvableQuery(string description);
     event LogNewTemperatureMeasure(string temperature);
 
     constructor()
@@ -21,7 +21,7 @@ contract WolframAlpha is usingOraclize {
     )
         public
     {
-        require(msg.sender == oraclize_cbAddress());
+        require(msg.sender == provable_cbAddress());
         temperature = _result;
         emit LogNewTemperatureMeasure(temperature);
         // Do something with the temperature measure...
@@ -31,7 +31,7 @@ contract WolframAlpha is usingOraclize {
         public
         payable
     {
-        emit LogNewOraclizeQuery("Oraclize query was sent, standing by for the answer...");
-        oraclize_query("WolframAlpha", "temperature in London");
+        emit LogNewProvableQuery("Provable query was sent, standing by for the answer...");
+        provable_query("WolframAlpha", "temperature in London");
     }
 }
