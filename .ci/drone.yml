@@ -9,7 +9,7 @@ steps:
     image: docker:git
     commands:
       - git clone https://github.com/provable-things/ethereum-examples.git .
-      - git checkout $DRONE_COMMIT -b $DRONE_BRANCH
+      - git checkout $DRONE_COMMIT -B $DRONE_BRANCH
       - git clone https://github.com/provable-things/ethereum-api.git
 
   - name: compile
@@ -30,7 +30,7 @@ steps:
     image: docker:git
     commands:
       - git clone https://github.com/provable-things/ethereum-examples.git .
-      - git checkout $DRONE_COMMIT -b $DRONE_BRANCH
+      - git checkout $DRONE_COMMIT -B $DRONE_BRANCH
       - git clone https://github.com/provable-things/ethereum-api.git
 
   - name: compile
@@ -51,7 +51,7 @@ steps:
     image: docker:git
     commands:
       - git clone https://github.com/provable-things/ethereum-examples.git .
-      - git checkout $DRONE_COMMIT -b $DRONE_BRANCH
+      - git checkout $DRONE_COMMIT -B $DRONE_BRANCH
       - git clone https://github.com/provable-things/ethereum-api.git
 
   - name: compile
@@ -72,7 +72,7 @@ steps:
     image: docker:git
     commands:
       - git clone https://github.com/provable-things/ethereum-examples.git .
-      - git checkout $DRONE_COMMIT -b $DRONE_BRANCH
+      - git checkout $DRONE_COMMIT -B $DRONE_BRANCH
       - git clone https://github.com/provable-things/ethereum-api.git
 
   - name: compile
