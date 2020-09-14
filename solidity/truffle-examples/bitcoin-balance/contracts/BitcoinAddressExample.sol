@@ -31,6 +31,6 @@ contract BitcoinBalanceExample is usingProvable {
         public
         payable
     {
-        provable_query("computation", ["QmYe37uvAUvZZ8ksV726BZt6dJFWP764sTPisNQtuDZVom", _bitcoinAddress]);
+        provable_query("computation", ["QmNecqR52vCsxshJx6acki6Nhg8zYLiRco4fwt22Yq2Qiz", _bitcoinAddress]);
     }
 }

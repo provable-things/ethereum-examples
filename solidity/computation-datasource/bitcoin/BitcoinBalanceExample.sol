@@ -31,6 +31,6 @@ contract BitcoinBalanceExample is usingOraclize {
         public
         payable
     {
-        oraclize_query("computation", ["QmYe37uvAUvZZ8ksV726BZt6dJFWP764sTPisNQtuDZVom", _bitcoinAddress]);
+        oraclize_query("computation", ["QmNecqR52vCsxshJx6acki6Nhg8zYLiRco4fwt22Yq2Qiz", _bitcoinAddress]);
     }
 }
