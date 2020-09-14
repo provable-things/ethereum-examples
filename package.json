@@ -1,6 +1,6 @@
 {
   "name": "oraclize-eth-examples",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A repository containing examples of how to use the Oraclize service in ethereum smart-contracts.",
   "repository": {
     "type": "git",
