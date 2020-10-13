@@ -1,6 +1,6 @@
 {
   "name": "provable-examples-using-truffle__random-datasource-example",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Testing set up for Provable's Random example contract",
   "main": "README.md",
   "directories": {
