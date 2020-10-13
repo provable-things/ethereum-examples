@@ -35,14 +35,7 @@ contract RandomExample is usingProvable {
         public
     {
         require(msg.sender == provable_cbAddress());
-
-        if (
-            provable_randomDS_proofVerify__returnCode(
-                _queryId,
-                _result,
-                _proof
-            ) != 0
-        ) {
+        if (provable_randomDS_proofVerify__returnCode(_queryId, _result, _proof) != 0) {
             /**
              * @notice  The proof verification has failed! Handle this case
              *          however you see fit.
@@ -76,7 +69,7 @@ contract RandomExample is usingProvable {
         payable
         public
     {
-        uint256 QUERY_EXECUTION_DELAY = 0;
+        uint256 QUERY_EXECUTION_DELAY = 0; // NOTE: The datasource currently does not support delays > 0!
         uint256 GAS_FOR_CALLBACK = 200000;
         provable_newRandomDSQuery(
             QUERY_EXECUTION_DELAY,
