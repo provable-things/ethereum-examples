@@ -1,6 +1,8 @@
-## Oraclize *random datasource* Solidity example
+## Oraclize *Random Datasource* Solidity Example
 
-> Note: the *random datasource* is currently available on the **Ethereum mainnet and on all Ethereum public testnets only** (Rinkeby, Kovan, Ropsten-revival) - it is not integrated yet with private blockchains/testrpc/browser-solidity-vmmode.
+> **Note:** the *Random Datasource* is currently available on the **Ethereum mainnet and on all Ethereum public testnets only** (Rinkeby, Kovan, Ropsten-revival) - it is not integrated yet with private blockchains/testrpc/browser-solidity-vmmode.
+
+> **Note:** The Random Datasource currently does not support a delay > 0.
 
 This folder contains a Solidity example contract code showing how the Oraclize *random datasource* can be used on Ethereum.
 

@@ -4,6 +4,8 @@
 
 This repo is to demonstrate how you would set up a Provable smart-contract development environment using Truffle to do most of the heavy lifting for you. Head on over to the `./test` folder to examine the javascript files that thoroughly test the smart-contract, which latter you will find in `./contracts`.
 
+> **Note:** The Random Datasource currently does not support a delay > 0.
+>
 ## :page_with_curl:  _Instructions_
 
 The random datasource is currently available on the Ethereum mainnet and on some Ethereum public testnets only (Rinkeby, Kovan, and Ropsten Revival); and it is not integrated yet with private blockchains/testrpc/browser-solidity-vmmode, so you will need to get a mnemonic passphrase and an infura key to make the example work.
