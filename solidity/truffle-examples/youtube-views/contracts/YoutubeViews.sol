@@ -23,7 +23,7 @@ contract YoutubeViews is usingProvable {
     {
         require(msg.sender == provable_cbAddress());
         viewsCount = _result;
-        emit LogYoutubeViewCount(viewsCount);
+        emit LogYoutubeViewCount(_result);
         // Do something with viewsCount, like tipping the author if viewsCount > X?
     }
 

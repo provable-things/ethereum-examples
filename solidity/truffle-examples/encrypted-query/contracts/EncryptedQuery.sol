@@ -25,7 +25,7 @@ contract EncryptedQuery is usingProvable {
         require(msg.sender == provable_cbAddress());
         update(); // Recursively update the status stored in the contract...
         requestStatus = _result;
-        emit LogNewRequestStatus(requestStatus);
+        emit LogNewRequestStatus(_result);
     }
 
     function update()

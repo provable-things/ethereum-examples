@@ -26,7 +26,7 @@ contract KrakenPriceTicker is usingProvable {
         require(msg.sender == provable_cbAddress());
         update(); // Recursively update the price stored in the contract...
         priceETHXBT = _result;
-        emit LogNewKrakenPriceTicker(priceETHXBT);
+        emit LogNewKrakenPriceTicker(_result);
     }
 
     function update()
