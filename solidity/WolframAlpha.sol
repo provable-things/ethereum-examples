@@ -23,7 +23,7 @@ contract WolframAlpha is usingProvable {
     {
         require(msg.sender == provable_cbAddress());
         temperature = _result;
-        emit LogNewTemperatureMeasure(temperature);
+        emit LogNewTemperatureMeasure(_result);
         // Do something with the temperature measure...
     }
 

@@ -31,7 +31,7 @@ contract CallerPaysForQuery is usingProvable {
     {
         require(msg.sender == provable_cbAddress());
         ethPriceInUSD = _result;
-        emit LogNewEthPrice(ethPriceInUSD);
+        emit LogNewEthPrice(_result);
     }
 
     function getEthPriceInUSDViaProvable()
