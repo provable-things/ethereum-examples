@@ -10,7 +10,7 @@
     "ethereum-bridge": "0.6.1",
     "solc": "0.4.20",
     "truffle": "5.0.0-beta.0",
-    "truffle-hdwallet-provider": "0.0.6",
+    "truffle-hdwallet-provider": "1.0.17",
     "web3": "1.0.0-beta.35"
   },
   "devDependencies": {},
