@@ -18,7 +18,7 @@
   "homepage": "https://github.com/n/a#readme",
   "dependencies": {
     "ethereum-bridge": "0.6.2",
-    "truffle": "5.0.6",
+    "truffle": "5.7.8",
     "web3": "1.0.0-beta.36"
   }
 }
