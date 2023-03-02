@@ -18,7 +18,7 @@
   "homepage": "https://github.com/n/a#readme",
   "dependencies": {
     "dotenv": "^7.0.0",
-    "truffle": "^5.0.9",
+    "truffle": "^5.7.8",
     "truffle-hdwallet-provider": "^1.0.0-web3one.5",
     "web3": "1.0.0-beta.36"
   }
